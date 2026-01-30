@@ -113,6 +113,27 @@ body {
 }
 
 /*-----------------------------------
+  PROJECTS GRID
+---------------------------------*/
+
+.projects-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.projects-grid .image-container {
+    max-width: 220px;
+    margin: 0;
+}
+
+.projects-grid .image-container img {
+    max-width: 180px;
+}
+
+/*-----------------------------------
   TYPOGRAPHY & CONTENT ELEMENTS
 ---------------------------------*/
 
@@ -525,6 +546,11 @@ footer p:last-child {
         padding-bottom: 56.25%;
         margin: 15px auto;
     }
+
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+    }
     
     ul, ol {
         padding: 10px 10px 10px 30px;
@@ -623,6 +649,7 @@ footer p:last-child {
                 <section>
                     <h2>Recent Projects</h2>
                     
+                    <div class="projects-grid">
                     <figure class="image-container">
                         <a href="living-as-data.html">
                             <img src="images/living-as-data-thumb.jpg" alt="Living as Data project">
@@ -636,6 +663,7 @@ footer p:last-child {
                         </a>
                         <figcaption>Unhindered AI - Click to view</figcaption>
                     </figure>
+                    </div>
                 </section>
             </main>
 
