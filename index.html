@@ -6,430 +6,604 @@
     <title>Heidi Stokes</title>
     <link rel="stylesheet" href="css/styles.css">
 <style>
- /* ------------------------------
-           BASE STYLES
-        --------------------------------*/
-        body {
-            font-family: 'Orator st','Typewriter condenced', 'Courier new';
-            font-size: 12px;
-            color: black;
-            background-image: 
-                linear-gradient(#ccc 1px, transparent 1px),
-                linear-gradient(90deg, #ccc 1px, transparent 1px);
-            background-color: #f9f2e2;
-            background-size: 20px 20px;
-            background-blend-mode: multiply;
-            padding: 20px;
-        }
-        
-        /* ------------------------------
-           PAGE CONTAINERS
-        --------------------------------*/
-        .page-wrapper {
-            max-width: 610px; /* Slightly larger than page-container */
-            margin: 10px auto;
-            border: 2px dashed #3498db; /* Blue border */
-            border-radius: 35px;
-            padding: 10px;
-            background-color: #f9f2e2; /* Same as your page background */
-        }
+/*-----------------------------------
+  BASE STYLES
+---------------------------------*/
 
-        .page-container {
-            max-width: 600px;
-            margin: 0 auto; /* Changed from 10px auto */
-            border: 2px solid #2980b9;
-            border-radius: 30px;
-            background-color: #f9f2e2;
-            padding: 20px;
-        }
-        
-        .cream-bg {
-            background-color: #f5e9c9;
-        }
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    color: #2c3e50;
+    background-image: 
+        linear-gradient(#ccc 1px, transparent 1px),
+        linear-gradient(90deg, #ccc 1px, transparent 1px);
+    background-color: #f9f2e2;
+    background-size: 20px 20px;
+    background-blend-mode: multiply;
+    padding: 20px;
+}
 
-        /* ------------------------------
-           IMAGE STYLES
-        --------------------------------*/
-        .image-container {
-            display: flex;
-            flex-direction: column; /* Stack images and caption vertically */
-            align-items: center; /* Center align content */
-            justify-content: center; /* Align images horizontally */
-            gap: 20px; /* Space between images */
-            max-width: 600px;
-            margin: 20px auto;
-        }
+/*-----------------------------------
+  PAGE WRAPPERS
+---------------------------------*/
 
-        .image-container img {
-            max-width: 200px;
-            border: 2px dotted #2980b9;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            background: #f5e9c9;
-            transition: transform 0.3s ease;
-        }
+.page-wrapper {
+    max-width: 610px;
+    margin: 10px auto;
+    border: 2px dashed #3498db;
+    border-radius: 35px;
+    padding: 10px;
+    background-color: #f9f2e2;
+}
 
-        .image-container img:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
+.page-container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #2980b9;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #f9f2e2;
+    position: relative;
+    box-shadow: 0 0 0 8px #f9f2e2, 0 0 0 10px #3498db;
+}
 
-        #background p {
-            text-align: justify;
-            padding: 20px;
-        }
+.page-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 20px 20px 0;
+    border-style: solid;
+    border-color: #f5e9c9 #fff;
+    box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+    border-radius: 0 0 0 5px;
+}
 
-        /* ------------------------------
-           TYPOGRAPHY & CONTENT ELEMENTS
-        --------------------------------*/
-        /* Common styles for headings and nav */
-        h1, h2, nav {
-            border: 2px dotted #2980b9;
-            border-radius: 20px;
-            background-color: #f9f2e2;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            color: #2c3e50;
-        }
+.notebook-clip {
+    position: absolute;
+    width: 40px;
+    height: 10px;
+    background: #a0a0a0;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+}
 
-        /* Specific styles for each heading type */
-        h1 {
-            padding: 12px;
-        }
+.clip-left { top: -5px; left: 80px; transform: rotate(2deg); }
+.clip-right { top: -5px; right: 80px; transform: rotate(-2deg); }
 
-        h2 {
-            padding: 8px;
-            margin-top: 30px;
-        }
+.cream-bg {
+    background-color: #f5e9c9;
+}
 
-        /* Lists styling */
-        ul, ol {
-            color: #2c3e50;
-            border: 2px dotted #2980b9;
-            border-radius: 20px;
-            background-color: #f9f2e2;
-            text-align: left;
-            list-style-position: inside;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 12px 12px 12px 40px;
-        }
+/*-----------------------------------
+  IMAGE CONTAINERS 
+---------------------------------*/
 
-        /* Paragraph and figcaption styling */
-        p, figcaption {
-            text-align: center;
-            font-size: 14px; /* Adjust font size */
-            color: #2c3e50; /* Text color */
-            background-color: #f9f2e2; /* Optional background */
-            border: 2px dotted #2980b9; /* Optional border */
-            border-radius: 10px; /* Optional rounded corners */
-            padding: 7px; /* Space inside the caption */
-            max-width: 600px; /* Ensure it aligns with the images */
-            margin: 0 auto; /* Center the caption */
-        }
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
 
-        /* ------------------------------
-           IMAGE BOX STYLING
-        --------------------------------*/
-        .image-box {
-            display: flex;
-            justify-content: center; /* Align images horizontally */
-            gap: 20px; /* Space between images */
-            background-color: #f5e9c9; /* Optional background */
-            border: 2px dotted #2980b9; /* Optional border */
-            border-radius: 10px; /* Optional rounded corners */
-            padding: 20px;
-        }
+.image-container img {
+    max-width: 200px;
+    border: 2px dotted #2980b9;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    background-color: #f5e9c9;
+    transition: transform 0.3s ease;
+}
 
-        .image-box img {
-            max-width: 150px;
-            border: 2px dotted #2980b9;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            padding: 10px;
-            background: #f5e9c9;
-        }
+.image-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
-        /*-------------------------------
-          VIDEO EMBEDDING 
-        --------------------------------*/
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 20px auto;
-            border: 2px dotted #2980b9;
-            border-radius: 10px;
-            background-color: #f5e9c9;
-        }
-          
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-        }
+.image-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #f5e9c9;
+    border: 2px dotted #2980b9;
+    border-radius: 10px;
+    padding: 20px;
+}
 
-        /* ------------------------------
-           LINKS & INTERACTIVE ELEMENTS
-        --------------------------------*/
-        /* Links styling */
-        a {
-            color: #3498db;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+.image-box img {
+    max-width: 150px;
+    border: 2px dotted #2980b9;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    padding: 10px;
+    background: #f5e9c9;
+}
 
-        a:hover {
-            color: #2980b9;
-            text-decoration: underline;
-        }
+/*-----------------------------------
+  TYPOGRAPHY & CONTENT ELEMENTS
+---------------------------------*/
 
-        /* Back to top button */
-        a[href="#top"] {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 10px;
-            margin-top: 10px;
-            text-decoration: none;
-        }
+h1, h2, h3, nav {
+    border: 2px dotted #2980b9;
+    border-radius: 20px;
+    background-color: #f9f2e2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #2c3e50;
+}
 
-        a[href="#top"]:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-            text-decoration: none;
-        }
+h1 { 
+    font-size: 1.8em;
+    padding: 12px;
+}
 
-        /* ------------------------------
-           NAVIGATION
-        --------------------------------*/
-        nav {
-            margin: 20px auto;
-            padding: 15px;
-            overflow: hidden; /* Prevents content from spilling out */
-            position: relative;
-        }
+h2 { 
+    font-size: 1.4em;
+    padding: 8px;
+    margin-top: 30px;
+}
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            gap: 5px; /* Reduced gap between items */
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            border: none;
-            background: none;
-            width: 100%;
-        }
+h3 { 
+    font-size: 1.2em;
+    padding: 6px;
+}
 
-        nav a {
-            padding: 4px 8px; /* Reduced padding */
-            background-color: #f9f2e2;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.2);
-            display: inline-block;
-            font-size: 11px; /* Slightly smaller font */
-            white-space: nowrap; /* Prevents text from breaking */
-        }
+p, figcaption {
+    text-align: center;
+    font-size: 14px;
+    color: #2c3e50;
+    background-color: #f9f2e2;
+    border: 2px dotted #2980b9;
+    border-radius: 10px;
+    padding: 7px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
 
-        nav a:hover {
-            background-color: #f5e9c9;
-            text-decoration: none;
-        }
+#background p {
+    text-align: justify;
+    padding: 20px;
+}
 
-        /* ------------------------------
-           SPECIAL SECTIONS
-        --------------------------------*/
-        /* Contact section styling */
-        #contact {
-            background-color: #f5e9c9;
-            border: 2px dotted #ccc;
-            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
-        }
+ul, ol {
+    color: #2c3e50;
+    border: 2px dotted #2980b9;
+    border-radius: 20px;
+    background-color: #f9f2e2;
+    text-align: left;
+    list-style-position: inside;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px 12px 12px 40px;
+}
 
-        /* Semantic element styling */
-        header, main, section, footer {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+.subtitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #3498db;
+}
 
-        section {
-            margin-bottom: 20px;
-        }
+/*-----------------------------------
+  CONTENT BOXES
+---------------------------------*/
 
-        /* ------------------------------
-           FOOTER SECTION
-        --------------------------------*/
-        footer {
-            position: relative;
-            padding-top: 20px;
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
+.content-box {
+    background-color: #f5e9c9;
+    border: 2px dotted #2980b9;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 20px 0;
+}
 
-        footer p:last-child {
-            border: none;
-            background: none;
-        }
-        
-        /* ------------------------------
-           DECORATIVE ELEMENTS
-        --------------------------------*/
-        .dotted-divider {
-            border: none;
-            border-top: 2px dashed #3498db;
-            height: 0px;
-            width: 250px;
-            margin: 30px auto;
-        }
+.content-dot-box {
+    background-color: transparent;
+    border: 2px dotted #2980b9;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 20px 0;
+    position: relative; 
+}
 
-        /* ------------------------------
-           MOBILE RESPONSIVENESS
-        --------------------------------*/
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
-                padding: 10px;
-            }
-            
-            .page-wrapper, .page-container {
-                padding: 10px;
-                width: 95%;
-                max-width: 100%;
-                border-radius: 20px;
-            }
-            
-            h1 {
-                font-size: 1.6em;
-                padding: 10px;
-            }
-            
-            h2 {
-                font-size: 1.4em;
-                padding: 8px;
-            }
-            
-            p, figcaption {
-                padding: 8px;
-                font-size: 13px;
-                max-width: 100%;
-            }
-            
-            /* Image responsiveness fixes */
-            .image-box {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-                padding: 10px;
-            }
-            
-            .image-box img {
-                max-width: 80%;
-                height: auto;
-            }
-            
-            .image-container {
-                width: 100%;
-            }
-            
-            .image-container img {
-                max-width: 80%;
-            }
-            
-            /* Video container adjustment */
-            .video-container {
-                padding-bottom: 56.25%;
-                margin: 15px auto;
-            }
-            
-            /* List adjustments */
-            ul, ol {
-                padding: 10px 10px 10px 30px;
-                max-width: 100%;
-            }
-            
-            /* Navigation adjustments */
-            nav {
-                padding: 10px 5px;
-            }
-            
-            nav ul {
-                gap: 8px;
-            }
-            
-            nav a {
-                font-size: 12px;
-                padding: 5px 8px;
-                display: block;
-                text-align: center;
-            }
-            
-            /* Dotted divider adjustment */
-            .dotted-divider {
-                width: 80%;
-            }
-        }
-        
-        /* ------------------------------
-           PHONE-SPECIFIC ADJUSTMENTS
-        --------------------------------*/
-        @media (max-width: 480px) {
-            body {
-                font-size: 13px;
-                padding: 5px;
-                background-size: 15px 15px; /* Smaller background grid */
-            }
-            
-            .page-wrapper, .page-container {
-                padding: 8px;
-                border-width: 1px;
-            }
-            
-            h1 {
-                font-size: 1.4em;
-            }
-            
-            h2 {
-                font-size: 1.3em;
-            }
-            
-            /* Further image adjustments for very small screens */
-            .image-box img {
-                max-width: 90%;
-            }
-            
-            p, figcaption {
-                font-size: 12px;
-            }
-            
-            /* Further video container adjustments */
-            .video-container {
-                margin: 10px auto;
-                border-width: 1px;
-            }
-        }
+.content-box.with-marker {
+    position: relative;
+    padding-left: 25px;
+}
+
+.content-box.with-marker:before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -8px;
+    width: 16px;
+    height: 16px;
+    background: #f9f2e2;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+}
+
+.highlighted-section {
+    background-color: #f5e9c9;
+    border: 2px dashed #3498db;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 25px 0;
+    position: relative;
+}
+
+.highlighted-section:before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: #3498db;
+    border: 2px solid #2980b9;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.highlighted-section:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background-color: #3498db;
+    border-left: 2px dashed #3498db;
+}
+
+.section-marker {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #f9f2e2;
+    border: 2px solid #2980b9;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+/*-----------------------------------
+  VIDEO EMBEDDING 
+---------------------------------*/
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 20px auto;
+    border: 2px dotted #2980b9;
+    border-radius: 10px;
+    background-color: #f5e9c9;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+/*-----------------------------------
+  LINKS & INTERACTIVE ELEMENTS 
+---------------------------------*/
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 8px 15px;		 
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    transform: translate(-2px, -2px);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    text-decoration: none;
+    color: white;
+}
+
+.info-link {
+    background-color: #f5e9c9;
+    border: 2px dotted #ccc;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 8px 15px;	
+}
+
+a[href="#top"] {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+a[href="#top"]:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    text-decoration: none;
+}
+
+/*-----------------------------------
+  NAVIGATION
+---------------------------------*/
+
+nav {
+    margin: 20px auto;
+    padding: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    width: 100%;
+}
+
+nav a {
+    padding: 4px 8px;
+    background-color: #f9f2e2;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    display: inline-block;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    background-color: #f5e9c9;
+    text-decoration: none;
+}
+
+/*-----------------------------------
+  SPECIAL SECTIONS
+---------------------------------*/
+
+#contact {
+    background-color: #f5e9c9;
+    border: 2px dotted #ccc;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+}
+
+header, main, section, footer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/*-----------------------------------
+  DECORATIVE ELEMENTS 
+---------------------------------*/
+
+.dotted-divider {
+    border: none;
+    border-top: 2px dashed #3498db;
+    height: 0px;
+    width: 250px;
+    margin: 30px auto;
+}
+
+.divider {
+    border: none;
+    border-top: 2px dashed #3498db;
+    width: 250px;
+    margin: 30px auto;
+    position: relative;
+}
+
+.divider:before, .divider:after {
+    content: "•";
+    color: #3498db;
+    position: absolute;
+    font-size: 20px;
+    top: -12px;
+}
+
+.divider:before { left: -5px; }
+.divider:after { right: -5px; }
+
+/*-----------------------------------
+  FOOTER
+---------------------------------*/
+
+footer {
+    position: relative;
+    padding-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+footer p:last-child {
+    border: none;
+    background: none;
+}
+
+/*-----------------------------------
+  TABLET RESPONSIVENESS 
+---------------------------------*/
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+        background-size: 18px 18px;
+    }
+    
+    .page-wrapper, .page-container {
+        padding: 10px;
+        width: 95%;
+        max-width: 100%;
+        border-radius: 20px;
+    }
+    
+    .page-container {
+        box-shadow: none;
+        border: 2px dashed #3498db;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+        padding: 10px;
+    }
+    
+    h2 {
+        font-size: 1.3em;
+        padding: 8px;
+    }
+    
+    p, figcaption {
+        padding: 8px;
+        font-size: 13px;
+        max-width: 100%;
+    }
+    
+    .image-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .image-box img {
+        max-width: 80%;
+        height: auto;
+    }
+    
+    .image-container {
+        width: 100%;
+    }
+    
+    .image-container img {
+        max-width: 70%;
+    }
+    
+    .video-container {
+        padding-bottom: 56.25%;
+        margin: 15px auto;
+    }
+    
+    ul, ol {
+        padding: 10px 10px 10px 30px;
+        max-width: 100%;
+    }
+    
+    nav {
+        padding: 10px 5px;
+    }
+    
+    nav ul {
+        gap: 8px;
+    }
+    
+    nav a {
+        font-size: 12px;
+        padding: 5px 8px;
+        display: block;
+        text-align: center;
+    }
+    
+    .dotted-divider, .divider {
+        width: 80%;
+    }
+}
+
+/*-----------------------------------
+  MOBILE RESPONSIVENESS 
+---------------------------------*/
+
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+        padding: 5px;
+        background-size: 15px 15px;
+    }
+    
+    .page-wrapper, .page-container {
+        padding: 8px;
+        border-width: 1px;
+    }
+    
+    h1 {
+        font-size: 1.3em;
+    }
+    
+    h2 {
+        font-size: 1.2em;
+    }
+    
+    .image-box img {
+        max-width: 90%;
+    }
+    
+    p, figcaption {
+        font-size: 12px;
+    }
+    
+    .video-container {
+        margin: 10px auto;
+        border-width: 1px;
+    }
+}
 </style>
 </head>
 <body id="top">
     <div class="page-wrapper">
         <div class="page-container">
-          <div class="notebook-clip clip-left></div>
-          <div class="notebook-clip clip-right></div>
+            <div class="notebook-clip clip-left"></div>
+            <div class="notebook-clip clip-right"></div>
 
             <header>
                 <h1>HEIDI STOKES</h1>
@@ -448,14 +622,12 @@
 
             <main>
                 <section>
-                  <div class="highlighted-content">
-                    <p><b>Heidi Stokes</b> is a Multimedia artist, with an <i>MA in Fine Art from Central St Martins.</i> Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society.
-                      Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world.
-                      Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
-                  </div>
+                    <div class="highlighted-section">
+                        <p><b>Heidi Stokes</b> is a Multimedia artist, with an <i>MA in Fine Art from Central St Martins.</i> Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society. Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world. Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
+                    </div>
                 </section>
 
-                <hr class="dotted-divider">
+                <hr class="divider">
 
                 <section>
                     <h2>Recent Projects</h2>
@@ -477,7 +649,7 @@
             </main>
 
             <footer>
-                <a href="#top">Back to top</a>
+                <a href="#top" class="btn">Back to top</a>
                 <p>© 2025 Heidi Stokes</p>
             </footer>
 
