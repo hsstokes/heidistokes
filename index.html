@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heidi Stokes</title>
+    <link rel="stylesheet" href="css/styles.css">
+<style>
+ /* ------------------------------
+           BASE STYLES
+        --------------------------------*/
+        body {
+            font-family: 'Orator st','Typewriter condenced', 'Courier new';
+            font-size: 12px;
+            color: black;
+            background-image: 
+                linear-gradient(#ccc 1px, transparent 1px),
+                linear-gradient(90deg, #ccc 1px, transparent 1px);
+            background-color: #f9f2e2;
+            background-size: 20px 20px;
+            background-blend-mode: multiply;
+            padding: 20px;
+        }
+        
+        /* ------------------------------
+           PAGE CONTAINERS
+        --------------------------------*/
+        .page-wrapper {
+            max-width: 610px; /* Slightly larger than page-container */
+            margin: 10px auto;
+            border: 2px dashed #3498db; /* Blue border */
+            border-radius: 35px;
+            padding: 10px;
+            background-color: #f9f2e2; /* Same as your page background */
+        }
+
+        .page-container {
+            max-width: 600px;
+            margin: 0 auto; /* Changed from 10px auto */
+            border: 2px solid #2980b9;
+            border-radius: 30px;
+            background-color: #f9f2e2;
+            padding: 20px;
+        }
+        
+        .cream-bg {
+            background-color: #f5e9c9;
+        }
+
+        /* ------------------------------
+           IMAGE STYLES
+        --------------------------------*/
+        .image-container {
+            display: flex;
+            flex-direction: column; /* Stack images and caption vertically */
+            align-items: center; /* Center align content */
+            justify-content: center; /* Align images horizontally */
+            gap: 20px; /* Space between images */
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .image-container img {
+            max-width: 200px;
+            border: 2px dotted #2980b9;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            background: #f5e9c9;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        #background p {
+            text-align: justify;
+            padding: 20px;
+        }
+
+        /* ------------------------------
+           TYPOGRAPHY & CONTENT ELEMENTS
+        --------------------------------*/
+        /* Common styles for headings and nav */
+        h1, h2, nav {
+            border: 2px dotted #2980b9;
+            border-radius: 20px;
+            background-color: #f9f2e2;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        /* Specific styles for each heading type */
+        h1 {
+            padding: 12px;
+        }
+
+        h2 {
+            padding: 8px;
+            margin-top: 30px;
+        }
+
+        /* Lists styling */
+        ul, ol {
+            color: #2c3e50;
+            border: 2px dotted #2980b9;
+            border-radius: 20px;
+            background-color: #f9f2e2;
+            text-align: left;
+            list-style-position: inside;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 12px 12px 12px 40px;
+        }
+
+        /* Paragraph and figcaption styling */
+        p, figcaption {
+            text-align: center;
+            font-size: 14px; /* Adjust font size */
+            color: #2c3e50; /* Text color */
+            background-color: #f9f2e2; /* Optional background */
+            border: 2px dotted #2980b9; /* Optional border */
+            border-radius: 10px; /* Optional rounded corners */
+            padding: 7px; /* Space inside the caption */
+            max-width: 600px; /* Ensure it aligns with the images */
+            margin: 0 auto; /* Center the caption */
+        }
+
+        /* ------------------------------
+           IMAGE BOX STYLING
+        --------------------------------*/
+        .image-box {
+            display: flex;
+            justify-content: center; /* Align images horizontally */
+            gap: 20px; /* Space between images */
+            background-color: #f5e9c9; /* Optional background */
+            border: 2px dotted #2980b9; /* Optional border */
+            border-radius: 10px; /* Optional rounded corners */
+            padding: 20px;
+        }
+
+        .image-box img {
+            max-width: 150px;
+            border: 2px dotted #2980b9;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            background: #f5e9c9;
+        }
+
+        /*-------------------------------
+          VIDEO EMBEDDING 
+        --------------------------------*/
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 20px auto;
+            border: 2px dotted #2980b9;
+            border-radius: 10px;
+            background-color: #f5e9c9;
+        }
+          
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        /* ------------------------------
+           LINKS & INTERACTIVE ELEMENTS
+        --------------------------------*/
+        /* Links styling */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        /* Back to top button */
+        a[href="#top"] {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            text-decoration: none;
+        }
+
+        a[href="#top"]:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        /* ------------------------------
+           NAVIGATION
+        --------------------------------*/
+        nav {
+            margin: 20px auto;
+            padding: 15px;
+            overflow: hidden; /* Prevents content from spilling out */
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 5px; /* Reduced gap between items */
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: none;
+            width: 100%;
+        }
+
+        nav a {
+            padding: 4px 8px; /* Reduced padding */
+            background-color: #f9f2e2;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            display: inline-block;
+            font-size: 11px; /* Slightly smaller font */
+            white-space: nowrap; /* Prevents text from breaking */
+        }
+
+        nav a:hover {
+            background-color: #f5e9c9;
+            text-decoration: none;
+        }
+
+        /* ------------------------------
+           SPECIAL SECTIONS
+        --------------------------------*/
+        /* Contact section styling */
+        #contact {
+            background-color: #f5e9c9;
+            border: 2px dotted #ccc;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Semantic element styling */
+        header, main, section, footer {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        /* ------------------------------
+           FOOTER SECTION
+        --------------------------------*/
+        footer {
+            position: relative;
+            padding-top: 20px;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        footer p:last-child {
+            border: none;
+            background: none;
+        }
+        
+        /* ------------------------------
+           DECORATIVE ELEMENTS
+        --------------------------------*/
+        .dotted-divider {
+            border: none;
+            border-top: 2px dashed #3498db;
+            height: 0px;
+            width: 250px;
+            margin: 30px auto;
+        }
+
+        /* ------------------------------
+           MOBILE RESPONSIVENESS
+        --------------------------------*/
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+                padding: 10px;
+            }
+            
+            .page-wrapper, .page-container {
+                padding: 10px;
+                width: 95%;
+                max-width: 100%;
+                border-radius: 20px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+                padding: 10px;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+                padding: 8px;
+            }
+            
+            p, figcaption {
+                padding: 8px;
+                font-size: 13px;
+                max-width: 100%;
+            }
+            
+            /* Image responsiveness fixes */
+            .image-box {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 10px;
+            }
+            
+            .image-box img {
+                max-width: 80%;
+                height: auto;
+            }
+            
+            .image-container {
+                width: 100%;
+            }
+            
+            .image-container img {
+                max-width: 80%;
+            }
+            
+            /* Video container adjustment */
+            .video-container {
+                padding-bottom: 56.25%;
+                margin: 15px auto;
+            }
+            
+            /* List adjustments */
+            ul, ol {
+                padding: 10px 10px 10px 30px;
+                max-width: 100%;
+            }
+            
+            /* Navigation adjustments */
+            nav {
+                padding: 10px 5px;
+            }
+            
+            nav ul {
+                gap: 8px;
+            }
+            
+            nav a {
+                font-size: 12px;
+                padding: 5px 8px;
+                display: block;
+                text-align: center;
+            }
+            
+            /* Dotted divider adjustment */
+            .dotted-divider {
+                width: 80%;
+            }
+        }
+        
+        /* ------------------------------
+           PHONE-SPECIFIC ADJUSTMENTS
+        --------------------------------*/
+        @media (max-width: 480px) {
+            body {
+                font-size: 13px;
+                padding: 5px;
+                background-size: 15px 15px; /* Smaller background grid */
+            }
+            
+            .page-wrapper, .page-container {
+                padding: 8px;
+                border-width: 1px;
+            }
+            
+            h1 {
+                font-size: 1.4em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            /* Further image adjustments for very small screens */
+            .image-box img {
+                max-width: 90%;
+            }
+            
+            p, figcaption {
+                font-size: 12px;
+            }
+            
+            /* Further video container adjustments */
+            .video-container {
+                margin: 10px auto;
+                border-width: 1px;
+            }
+        }
+</style>
+</head>
+<body id="top">
+    <div class="page-wrapper">
+        <div class="page-container">
+          <div class="notebook-clip clip-left></div>
+          <div class="notebook-clip clip-right></div>
+
+            <header>
+                <h1>HEIDI STOKES</h1>
+                
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="animations.html">Animations</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="living-as-data.html">Living as Data</a></li>
+                        <li><a href="unhindered-ai.html">Unhindered AI</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <section>
+                  <div class="highlighted-content">
+                    <p><b>Heidi Stokes</b> is a Multimedia artist, with an <i>MA in Fine Art from Central St Martins.</i> Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society.
+                      Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world.
+                      Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
+                  </div>
+                </section>
+
+                <hr class="dotted-divider">
+
+                <section>
+                    <h2>Recent Projects</h2>
+                    
+                    <figure class="image-container">
+                        <a href="living-as-data.html">
+                            <img src="images/living-as-data-thumb.jpg" alt="Living as Data project">
+                        </a>
+                        <figcaption>Living as Data - Click to view</figcaption>
+                    </figure>
+                    
+                    <figure class="image-container">
+                        <a href="unhindered-ai.html">
+                            <img src="images/unhindered-ai-thumb.jpg" alt="Unhindered AI project">
+                        </a>
+                        <figcaption>Unhindered AI - Click to view</figcaption>
+                    </figure>
+                </section>
+            </main>
+
+            <footer>
+                <a href="#top">Back to top</a>
+                <p>© 2025 Heidi Stokes</p>
+            </footer>
+
+        </div>
+    </div>
+</body>
+</html>
