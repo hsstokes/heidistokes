@@ -682,6 +682,11 @@ footer p:last-child {
         padding: 5px;
         background-size: 15px 15px;
     }
+
+nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
     
     .page-wrapper, .page-container {
         padding: 8px;
