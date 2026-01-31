@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <meta charset="UTF-8">
+	   <meta name="viewport"
+	   content="width=device-width,initial-scale=1.0">
+		<title>DEVELOPING THE LANGUAGE OF THE MULTIMODAL GRAPH</title>
+   <style>
+   
+   /*-----------------------------------
+	 BASE STYLES
+	----------------------------------*/
+	
+	body {
+		font-family: 'Orator St', 'Typewriter condenced','Courier new';
+		font-size: 12px; /*desktop default 12px*/
+		color:black;
+		background-image: 
+		   linear-gradient(#ccc 1px, transparent 1px),
+		   linear-gradient(90deg, #ccc 1px, transparent 1px);
+		 background-color: #f9f2e2;
+		 background-size: 20px 20px; /*default desktop grid size*/
+		 background-blend-mode: multiply;
+		 padding:20px;
+	}
+	
+	/*-----------------------------------
+	 PAGE CONTAINERS 
+	----------------------------------*/
+	
+	.page-wrapper {
+		max-width: 610px;
+		margin:10px auto;
+		border:2px dashed #3498db;
+		border-radius: 35px;
+		padding:10px;
+		background-color: #f9f2e2;
+	}
+	
+	.page-container {
+	   max-width: 600px;
+	   margin: 0px auto;
+	   border: 2px solid #2980b9;
+	   border-radius: 30px;
+	   padding:20px;
+	   background-color: #f9f2e2;
+	}
+	
+	.cream-bg {
+	   background-color: #f9f2e2;
+	}
+	
+	/*-----------------------------------
+	 IMAGE STYLES 
+	----------------------------------*/
+	
+	.image-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		max-width: 600px;
+		margin:20px auto;
+	}
+	
+	.image-container img {
+		max-width: 200px;
+		border: 2px dotted #2980b9;
+		box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+		padding:10px;
+		background-color: #f5e9c9;
+		transition: transform 0.3s ease;
+	}
+	 
+	.image-container img:hover {
+		transform: rotate(0deg) scale(1.02);
+	}
+	
+	
+	/* ------------------------------
+		TYPOGRAPHY & CONTENT ELEMENTS
+		--------------------------------*/
+		
+	h1, h2, h3, nav {
+		border:2px dotted #2980b9;
+		border-radius: 20px;
+		background-color: #f9f2e2;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	   margin-bottom: 15px;
+	   max-width: 600px;
+	   margin-left: auto;
+	   margin-right:auto;
+	   text-align:center;
+	   color: #2c3e50;
+	}
+	
+	h1 {
+		padding:12px;
+	}
+	
+	h2 {
+		padding:8px;
+		margin-top: 30px;
+	}
+	
+	h3 {
+		padding: 12px;
+	}
+	
+	/*list styling */
+	
+	ul, ol {
+		color: #2c3e50;
+		border:2px dotted #2980b9;
+		border-radius: 20px;
+		background-color: #f9f2e2;
+		text-align:left;
+		list-style-position:inside;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right:auto;
+		padding: 12px 12px 12px 40px;
+		
+	}
+	
+	p, figcaption {
+		text-align:center;
+		font-size:14px;
+		color: #2c3e50;
+		background-color: #f9f2e2;
+		border: 2px dotted #2980b9;
+		border-radius: 10px;
+		padding: 7px;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+	
+	/*------------------------------
+		   IMAGE BOX STYLING
+	--------------------------------*/
+	
+	.image-box {
+		display:flex;
+		justify-content: center;
+		gap:20px;
+		background-color: #f5e9c9;
+		border: 2px dotted #2980b9;
+		border-radius: 10px;
+		padding:20px;
+	}
+		
+	.image-box img {
+		max-width: 150px;
+		border: 2px dotted #2980b9;
+		box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+	   padding: 10px;
+	   background-color: #f5e9c9;
+
+	}
+	
+	/*------------------------------
+		   VIDEO EMBEDDING
+	--------------------------------*/
+	
+	.video-container {
+		position:relative;/*positions the container*/
+		padding-bottom: 56.25%; /*represents 16.9 aspect ratio*/
+		height:0;
+		overflow:hidden;
+		max-width: 100%;
+		margin:20px auto;
+		border:2px dotted #2980b9;
+		border-radius: 10px;
+		background-color: #f5e9c9;
+	}
+	
+	.video-container iframe {
+		position:absolute;/*positions the iframe relative to the container*/
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		border-radius:5px;
+	}
+	
+	/* ------------------------------
+		   LINKS & INTERACTIVE ELEMENTS
+	--------------------------------*/
+	
+	a {
+		color: #3498db;
+		text-decoration: none;
+		transition: all 0.3s ease;
+	}
+	
+	a:hover {
+		color: #2980b9;
+		text-decoration: underline;
+	}
+	
+	a[href="#top"] {
+		display:inline-block;
+		background-color: #3498db;
+		color:white;
+		padding: 8px 15px; 
+		border-radius: 10px;
+		margin-top: 10px;
+		text-decoration: none;
+	}
+	
+	a[href="#top"]:hover {
+	
+	   background-color: #2980b9;
+	   transform: translate(-3px, -3px);
+	   box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+	   text-decoration: none;
+	   
+	}
+	
+	/* ------------------------------
+		   SPECIAL SECTIONS 
+	--------------------------------*/
+	
+	/*contact section styling*/
+	#contact {
+		background-color: #f5e9c9;
+		border: 2px dotted #ccc;
+		box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+
+	}
+	
+	/* semantic element styling*/
+	header, main, section, footer {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	
+	section {
+		margin-bottom: 20px;
+	}
+	
+	/* ------------------------------
+		   FOOTER SECTION
+	--------------------------------*/
+	
+	footer {
+	    position: relative;
+	    padding-top: 20px;
+	    margin-top: 30px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    gap:10px;
+	}
+	
+	footer p:last-child {
+	    border: none;
+	    background: none;
+	}
+	
+	
+	/* ------------------------------
+		   DECORATIVE ELEMENTS
+	--------------------------------*/
+		.dotted-divider {
+			border: none;
+			border-top: 2px dashed #3498db;
+			height: 0px;
+			width: 250px;
+			margin: 30px auto;
+		}
+
+		/* Added classes for the content structure */
+		.section-content {
+			margin-bottom: 20px;
+			padding: 0 10px;
+		}
+		
+		.subtitle {
+			font-size: 16px;
+			font-weight: 600;
+			margin-bottom: 10px;
+		}
+		
+		.description {
+			font-size: 14px;
+			line-height: 1.6;
+			text-align: justify;
+			margin: 15px auto;
+			max-width: 550px;
+			padding: 15px;
+		}
+		
+		/* ------------------------------
+		   MOBILE RESPONSIVENESS
+		--------------------------------*/
+		
+		/*ipads, laptops */
+		@media (max-width: 768px) {
+			body {
+				font-size: 14px; /* for better  readability on tablets */
+				padding: 10px;
+				background-size: 18px 18px; /* background grid for tablets*/
+			}
+			
+		.page-wrapper, .page-container {
+			padding: 10px;
+			width: 95%;
+			max-width: 100%;
+			border-radius: 20px;
+		}
+		
+		h1 {
+			font-size: 1.6em; /* for tablets (780px)*/
+			padding: 10px;
+		}
+		
+		h2 {
+			font-size: 1.4em; /* for tablets (780px)*/
+			padding:8px;
+		}
+		
+		p, figcaption {
+			padding: 8px;
+			font-size: 13px;
+			max-width: 100%;
+		}
+		
+		/* image responsive fix*/
+		.image-box {
+			flex-direction: column;
+			align-items: center;
+			gap: 15px;
+			padding:10px;
+		}
+		
+		.image-box img {
+			max-width: 80%;
+			height: auto;
+		}
+		
+		.image-container {
+			width: 100%;
+		}
+		
+		.image-container img {
+			max-width: 80%;
+		}
+		
+		/*video container mobile adjustments*/
+		.video-container {
+			padding-bottom: 56.25%;
+			margin: 15px auto;
+		}
+		
+		/*list adjustment*/
+		ul, ol {
+			padding: 10px 10px 10px 30px; 
+			max-width: 100%;
+		}
+		
+		/*dotted-divider adjustment */
+		.dotted-divider {
+			width: 80%;
+		}
+	}
+		
+		/* ------------------------------
+		   PHONE SPECIFIC ADJUSTMENTS
+		--------------------------------*/
+		
+		/*iphones, small devices */
+		@media (max-width: 480px) {
+			body {
+				font-size: 13px; /*reduced to 13px to fit more content*/
+				padding: 5px;
+				background-size: 15px 15px; /* background grid*/
+			}
+			
+		.page-wrapper, .page-container {
+			padding: 8px;
+			border-width: 1px;
+		}
+		
+		h1 {
+			font-size: 1.4em; /* for phones (480px)*/
+		}
+		
+		h2 {
+			font-size: 1.3em; /* for phones (480px)*/
+		}
+		
+		/*further image adjustments for very small screens*/
+		.image-box img {
+		    max-width: 90%;
+		}
+		
+		p, figcaption {
+			font-size: 12px;
+		}
+	}
+   
+   </style>
+   </head>
+	<body id="top">
+		<div class="page-wrapper">
+		<div class="page-container">
+			<header>
+				<h1>DEVELOPING THE LANGUAGE OF THE MULTIMODAL GRAPH</h1>
+		   </header>
+		   
+		   <main>
+		   
+		   <div class="section-content">
+			 <p class="subtitle">Developing the Multimodal Graph <b>– ‘Data-Driven Engine’</b></p>
+			<p class="description"><i>This outcome focuses on the development of a visual language for AI’s emotional interpretation. Using the concept of a ‘Data-Driven Engine,’ it highlights how AI uses data to process and map emotions, blending auditory and visual elements to represent this process.”</i>
+			   </p>
+		   </div>
+		   
+		   <section id="visuals">
+		   <h2>Visual Outcomes</h2>
+			<figure class="image-container">
+			 <img src="images/visual-1.jpg" alt="Speech prosody /time, rhythm, timbres of speech">
+		  <figcaption>Speech prosody /time, rhythm, timbres of speech</figcaption>
+			</figure>
+			
+			
+			<figure class="image-container">
+			 <img src="images/visual-2.jpg" alt="Language/ emotion analysis Data driven engine">
+		  <figcaption>Language/ emotion analysis "Data driven engine"</figcaption>
+		   </figure>
+		   
+		   			
+			<figure class="image-container">
+			 <img src="images/visual-3.jpg" alt="visual research">
+		  <figcaption>Visual research</figcaption>
+		   </figure>
+		   
+		   				<h3>Tools used to Visually interpret AI's Emotional Comprehension</h3>
+
+				<ol>
+					<li><b>Hume AI: </b>Analysing speech prosody to detect emotions in language.</li>
+				  <br />
+					<li><b>Poe: </b>Interpreting emotions through shapes.</li>
+				  <br />
+					<li><b>Stable Audio: </b>Translating emotional tones into sound.</li>
+				  <br />
+					<li><b>AI Generative Tools: </b>Exploring hand gesture interpretations through various AI models.</li>
+				  <br />
+				</ol>
+		   
+		   
+		   <div class="section-content">
+			 <p class="subtitle">Future Exploration</p>
+			<p class="description"><i>At this stage, I was really keen on creating something that looked more scientific—a graph that would clearly map each emotion to its corresponding hand gesture. But I was still frustrated with the projection mapping. I wanted to keep some animation in the mix, so I decided to animate each of the hand gestures, as if they were part of a diagram in a digital world. The result was a bit eerie, but also fascinating.
+
+I started imagining how this could work in a digital space—what if a sound triggered when you swiped a still hand, and it came to life in animation? That would add a whole new level of interactivity. But honestly, my coding skills were pretty minimal at that point, and it felt too complex to pull off. So, I decided to take a step back, keep it simple, and focus on sketchbooks, film outcomes, and the touchboard with sound effects.”</i>
+			   </p>
+		   </div>
+		  </section>
+
+		  </main>
+	
+			<hr class="dotted-divider">
+			
+		<footer>
+			<p id="contact">Contact me at: <a href="mailto:heidistokes2001@yahoo.co.uk">heidistokes2001@yahoo.co.uk</a></p>
+			<p><a href="#top">Back to top</a></p>
+		</footer>
+	   </div>
+	   </div>
+	</body>
+</html>
