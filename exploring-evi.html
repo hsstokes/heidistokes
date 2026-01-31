@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>EVI: EXPLORING AI EMPATHY THROUGH PERSONALITY</title>
+	<style>
+	/*--------------------------------
+	  BASIC STYLE
+	------------------------------*/
+
+	body {
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 12px;
+		color: #2c3e50;
+		background-image: 
+			linear-gradient(#ccc 1px, transparent 1px),
+			linear-gradient(90deg, #ccc 1px, transparent 1px);
+		background-color: #f9f2e2;
+		background-size: 20px 20px;
+		background-blend-mode: multiply;
+		padding: 20px;
+	}
+
+	/*--------------------------------
+	  PAGE WRAPPERS
+	------------------------------*/
+
+	.page-container {
+		max-width: 600px;
+		margin: 10px auto;
+		border: 2px solid #2980b9;
+		border-radius: 30px;
+		padding: 20px;
+		background-color: #f9f2e2;
+		position: relative;
+		box-shadow: 0 0 0 8px #f9f2e2, 0 0 0 10px #3498db;
+	}
+
+	.page-container:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-width: 0 20px 20px 0;
+		border-style: solid;
+		border-color: #f5e9c9 #fff;
+		box-shadow: -2px 2px 3px rgba(0,0,0,0.1);
+		border-radius: 0 0 0 5px;
+	}
+
+	.notebook-clip {
+		position: absolute;
+		width: 40px;
+		height: 10px;
+		background: #a0a0a0;
+		border-radius: 4px;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+		z-index: 10;
+	}
+
+	.clip-left { top: -5px; left: 80px; transform: rotate(2deg); }
+	.clip-right { top: -5px; right: 80px; transform: rotate(-2deg); }
+
+	/*--------------------------------
+	  IMAGE CONTAINERS
+	------------------------------*/
+
+	.image-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+		margin: 20px auto;
+	}
+
+	.image-container img {
+		max-width: 200px;
+		border: 2px dotted #2980b9;
+		box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+		padding: 10px;
+		background-color: #f5e9c9;
+		transition: transform 0.3s ease;
+	}
+
+	.image-container img:hover {
+		transform: scale(1.05);
+		box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+	}
+
+	/*--------------------------------
+	  TYPOGRAPHY & CONTENT
+	------------------------------*/
+
+	h1, h2, h3 {
+		text-align: center;
+		color: #2c3e50;
+		margin-bottom: 15px;
+	}
+
+	h1 { 
+		font-size: 1.8em;
+		border-bottom: 2px dotted #2980b9;
+		padding-bottom: 12px;
+	}
+
+	h2 { 
+		font-size: 1.4em;
+		margin-top: 15px;
+	}
+
+	h3 { 
+		font-size: 1.2em;
+	}
+
+	p, figcaption {
+		text-align: justify;
+		font-size: 14px;
+		color: #2c3e50;
+		line-height: 1.6;
+		margin-bottom: 15px;
+	}
+
+	.content-box {
+		background-color: #f5e9c9;
+		border: 2px dotted #2980b9;
+		border-radius: 15px;
+		padding: 15px;
+		margin: 20px 0;
+	}
+	
+	.content-dot-box {
+		background-color: transparent;
+		border: 2px dotted #2980b9;
+		border-radius: 15px;
+		padding: 10px;
+		margin: 20px 0;
+		position: relative; 
+	}
+
+	.content-box.with-marker {
+		position: relative;
+		padding-left: 25px;
+	}
+
+	.content-box.with-marker:before {
+		content: "";
+		position: absolute;
+		top: 15px;
+		left: -8px;
+		width: 16px;
+		height: 16px;
+		background: #f9f2e2;
+		border: 2px solid #3498db;
+		border-radius: 50%;
+	}
+
+	/*--------------------------------
+	  LINKS & INTERACTIVE ELEMENTS
+	------------------------------*/
+
+	a {
+		color: #3498db;
+		text-decoration: none;
+		transition: all 0.3s ease;
+	}
+
+	a:hover {
+		color: #2980b9;
+		text-decoration: underline;
+	}
+
+	.btn {
+		display: inline-block;
+		background-color: #3498db;
+		color: white;
+		padding: 8px 15px;
+		border-radius: 10px;
+		text-decoration: none;
+	}
+
+	.btn:hover {
+		background-color: #2980b9;
+		transform: translate(-2px, -2px);
+		box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+		text-decoration: none;
+		color: white;
+	}
+
+	/*--------------------------------
+	  VIDEO EMBEDDING
+	------------------------------*/
+
+	.video-container {
+		position: relative;
+		padding-bottom: 56.25%;
+		height: 0;
+		overflow: hidden;
+		margin: 20px auto;
+		border: 2px dotted #2980b9;
+		border-radius: 10px;
+		background-color: #f5e9c9;
+	}
+
+	.video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	/*--------------------------------
+	  DECORATIVE ELEMENTS
+	------------------------------*/
+
+	.divider {
+		border: none;
+		border-top: 2px dashed #3498db;
+		width: 250px;
+		margin: 30px auto;
+		position: relative;
+	}
+
+	.divider:before, .divider:after {
+		content: "•";
+		color: #3498db;
+		position: absolute;
+		font-size: 20px;
+		top: -12px;
+	}
+
+	.divider:before { left: -5px; }
+	.divider:after { right: -5px; }
+
+	.highlighted-section {
+		background-color: #f5e9c9;
+		border: 2px dashed #3498db;
+		border-radius: 15px;
+		padding: 15px;
+		margin: 25px 0;
+		position: relative;
+	}
+		
+	.highlighted-section:before {
+		content: "";
+		position: absolute;
+		top: 20px;
+		left: -10px;
+		width: 20px;
+		height: 20px;
+		background-color: #3498db;
+		border: 2px solid #2980b9;
+		border-radius: 50%;
+		z-index: 5;
+	}
+
+	.highlighted-section:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 2px;
+		background-color: #3498db;
+		border-left: 2px dashed #3498db;
+	}
+
+	.section-marker {
+		position: absolute;
+		top: -15px;
+		left: 20px;
+		width: 30px;
+		height: 30px;
+		background-color: #f9f2e2;
+		border: 2px solid #2980b9;
+		border-radius: 50%;
+		z-index: 5;
+	}
+	   
+	.subtitle {
+		font-size: 16px;
+		font-weight: 600;
+		margin-bottom: 10px;
+		color: #2c3e50;
+		text-decoration: underline;
+		text-decoration-style: dotted;
+		text-decoration-color: #3498db;
+	}
+
+	/*--------------------------------
+	  FOOTER
+	------------------------------*/
+
+	footer {
+		padding-top: 20px;
+		margin-top: 30px;
+		text-align: center;
+	}
+
+	/*--------------------------------
+	  TABLET RESPONSIVE
+	------------------------------*/
+
+	@media (max-width: 768px) {
+		body {
+			padding: 10px;
+			background-size: 18px 18px;
+		}
+		
+		.page-container {
+			padding: 15px;
+			border-radius: 20px;
+			box-shadow: none;
+			border: 2px dashed #3498db;
+		}
+		
+		h1 { font-size: 1.5em; }
+		h2 { font-size: 1.3em; }
+		
+		.image-container img {
+			max-width: 70%;
+		}
+		
+		.divider { width: 80%; }
+	}
+
+	/*--------------------------------
+	  MOBILE RESPONSIVE
+	------------------------------*/
+
+	@media (max-width: 480px) {
+		body {
+			padding: 5px;
+			font-size: 13px;
+		}
+		
+		.page-container {
+			padding: 10px;
+		}
+		
+		h1 { font-size: 1.3em; }
+		
+		p, figcaption { font-size: 12px; }
+	}
+	
+	</style>
+</head>
+<body id="top">
+	<div class="page-container">
+		<div class="notebook-clip clip-left"></div>
+		<div class="notebook-clip clip-right"></div>
+	 
+		<header>
+			<div class="content-box">
+				<h2>EVI: EXPLORING AI EMPATHY THROUGH PERSONALITY</h2>
+			</div>
+		</header>
+
+		<main>
+			<section id="introduction">
+				<div class="content-dot-box">
+					<h2>Sentence 10/11: Algorithms dictate my choices.</h2>
+				</div>
+				
+				<div class="content-dot-box">
+					<p>EVI, an AI developed by Hume.AI, goes beyond basic responses by detecting emotional cues in voice, from boredom to interest. In collaboration with Arunav, we examined EVI through the lens of the Big 5 personality traits.</p>
+				</div>
+			</section>
+
+			<section id="big-five">
+				<div class="content-dot-box">
+					<div class="section-marker"></div>
+					<h3>The Big 5 personality traits</h3>
+				</div>
+	 
+				<div class="highlighted-section">
+					<ul>
+						<li>openness</li>
+						<li>conscientiousness</li>
+						<li>extroversion</li>
+						<li>agreeableness</li>
+						<li>neuroticism</li>
+					</ul>
+				</div>
+			</section>
+	
+			<section id="evi-collaboration">
+				<div class="content-dot-box">
+					<h3>Evi Art Collaboration: Exploring AI Empathy Through Creativity</h3>
+				</div>
+
+				<div class="content-dot-box">
+					<p><b>Hi Evi</b></p>
+					<p><i>I hope you do not mind being part of a research project. I understand you analyze emotions and comprehend conversational context, so I would like to explore your empathetic understanding in a creative way.</i></p>
+					<p><i>I would like to create artwork with you - partly inspired and shaped by your input. Here is the plan:</i></p>
+					<p><i>I will revisit a previous conversation we had, analyzing your emotional expressions sentence by sentence.</i></p>
+					<p><i>For each sentence, I will ask you to provide visual prompts - interpreted through gestures, symbols, or other imagery that reflect your emotional analysis.</i></p>
+					<p><i>I will translate these prompts into an image generator to create initial concepts, which I will refine manually into artwork.</i></p>
+					<p><i>Let me know if you are interested in participating!</i></p>
+				</div>
+			</section>
+	
+			<section class="visuals">
+				<div class="highlighted-section">
+					<div class="subtitle">Sketchbook and touchboard outcomes</div>
+					<figure class="image-container">
+						<img src="images/visual-1.jpg" alt="sketchbook">
+					</figure>
+					<figure class="image-container">
+						<img src="images/visual-2.jpg" alt="sketchbook">
+					</figure>
+				</div>
+			</section>
+   
+			<section id="visual-conclusion">
+				<div class="content-box">
+					<h3>Conclusive thoughts</h3>
+				</div>
+	  
+				<div class="video-container">
+					<iframe src="https://player.vimeo.com/video/1011261202" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Empathic Voice Interface"></iframe>
+				</div>
+			</section>
+			
+			<section id="written-conclusion">
+			  <div class="content-box">
+			   <h3>Reflecting on this with ChatGPT, Arunav proposed that EVi's personality may well have been defined by certain programming parameters to emphasise positive traits.</h3>
+			  </div>
+			<div class="content-dot-box">
+			 <p>My conversation with Evi was fascinating. It was incredible to interact with a chatbot that could speak and understand the tonality of my voice, detecting emotions and responding in such a sensitive way. We even ended up having a deep conversation about how algorithms influence our choices—and ways we might change that. The only issue was, Evi was very agreeable. Everything I said, Evi would politely respond, often agreeing with me and suggesting that my answers were good. Honestly, it got a bit unnerving. I’m no Einstein, and it would’ve been refreshing to be challenged on some of the things I said. After all, throughout history, we’ve learned that questioning is key to progress and making things better.</p>
+
+			 <p>As AI interactions become more prevalent, I think it’s going to be increasingly important to encourage diverse perspectives. Ultimately, dynamic democracy, which remains our best option, thrives on dialogue and diverse viewpoints. So, let's ensure that AI interactions also support this—to strengthen what’s working in a world that, ideally, isn’t controlled by violence or aggression, but by acceptance, and a willingness to learn from different beliefs and perspectives.</p>
+		     </div>
+		   </section>
+		</main>
+	
+		<footer>
+			<a href="#top" class="btn">Back to top</a>
+		</footer>
+	</div>
+</body>
+</html>
