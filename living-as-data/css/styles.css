@@ -72,6 +72,10 @@ body {
   IMAGE CONTAINERS 
 ---------------------------------*/
 
+/*-----------------------------------
+  IMAGE CONTAINERS 
+---------------------------------*/
+
 .image-container {
     display: flex;
     flex-direction: column;
@@ -82,7 +86,8 @@ body {
 }
 
 .image-container img {
-    max-width: 200px;
+    max-width: 80%;
+    width: 100%;
     border: 2px dotted #2980b9;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     padding: 10px;
@@ -106,7 +111,8 @@ body {
 }
 
 .image-box img {
-    max-width: 150px;
+    max-width: 45%;
+    width: 100%;
     border: 2px dotted #2980b9;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     padding: 10px;
@@ -594,7 +600,7 @@ footer p:last-child {
         font-size: 13px;
         max-width: 100%;
     }
-    
+            
     .image-box {
         flex-direction: column;
         align-items: center;
@@ -604,7 +610,6 @@ footer p:last-child {
     
     .image-box img {
         max-width: 80%;
-        height: auto;
     }
     
     .image-container {
@@ -612,8 +617,9 @@ footer p:last-child {
     }
     
     .image-container img {
-        max-width: 70%;
-    }
+        max-width: 90%;
+    }        
+    
     
     .video-container {
         padding-bottom: 56.25%;
@@ -702,7 +708,11 @@ nav ul {
     }
     
     .image-box img {
-        max-width: 90%;
+        max-width: 95%;
+    }
+    
+    .image-container img {
+        max-width: 95%;
     }
     
     p, figcaption {
