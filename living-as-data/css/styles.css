@@ -69,7 +69,7 @@ body {
 }
 
 /*-----------------------------------
-  VISUALIZATION ACCORDION
+  VISUALIZATION ACCORDION - ENHANCED
 ---------------------------------*/
 
 .visualization-accordion {
@@ -77,7 +77,7 @@ body {
     border: 2px dotted #2980b9;
     border-radius: 15px;
     background-color: #f9f2e2;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to allow content to breathe */
 }
 
 .visualization-accordion summary {
@@ -91,6 +91,12 @@ body {
     list-style: none;
     position: relative;
     padding-left: 30px;
+    border-radius: 13px 13px 0 0;
+}
+
+.visualization-accordion:not([open]) summary {
+    border-bottom: none;
+    border-radius: 13px;
 }
 
 .visualization-accordion summary::-webkit-details-marker {
@@ -127,55 +133,96 @@ body {
     display: flex;
     gap: 20px;
     margin: 15px 0;
+    justify-content: center;
 }
 
 .process-images figure {
     flex: 1;
     margin: 0;
     text-align: center;
+    max-width: 250px;
 }
 
 .process-images img {
     width: 100%;
     max-width: 100%;
+    height: auto;
     border: 2px dotted #2980b9;
     padding: 8px;
     background-color: #f5e9c9;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-images img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .process-images figcaption {
-    font-size: 12px;
+    font-size: 11px;
     font-style: italic;
     margin-top: 8px;
     border: none;
     background: none;
     padding: 5px;
+    color: #666;
 }
+
+/*-----------------------------------
+  VISUALIZATION EMBED - IMPROVED
+---------------------------------*/
 
 .viz-embed {
     margin-top: 20px;
     border: 2px dotted #2980b9;
     border-radius: 10px;
     overflow: hidden;
-    background-color: #f5e9c9;
+    background-color: #fff; /* White background for better viz visibility */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }
 
 .viz-embed iframe {
     width: 100%;
-    height: 400px;
+    height: 500px; /* Increased height */
     border: none;
     display: block;
+    background-color: #fff;
+}
+
+/* Optional: Add a "View Full Screen" link */
+.viz-fullscreen-link {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background-color: #f5e9c9;
+    border-top: 1px dotted #2980b9;
+    font-size: 12px;
+}
+
+.viz-fullscreen-link a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.viz-fullscreen-link a:hover {
+    text-decoration: underline;
 }
 
 /*-----------------------------------
-  ACCORDION RESPONSIVE
+  ACCORDION RESPONSIVE - UPDATED
 ---------------------------------*/
 
 @media (max-width: 768px) {
     .process-images {
         flex-direction: column;
         gap: 15px;
+        align-items: center;
+    }
+    
+    .process-images figure {
+        max-width: 80%;
     }
     
     .visualization-accordion summary {
@@ -188,7 +235,7 @@ body {
     }
     
     .viz-embed iframe {
-        height: 350px;
+        height: 400px;
     }
 }
 
@@ -203,7 +250,11 @@ body {
     }
     
     .viz-embed iframe {
-        height: 300px;
+        height: 350px;
+    }
+    
+    .process-images figure {
+        max-width: 95%;
     }
 }
 
