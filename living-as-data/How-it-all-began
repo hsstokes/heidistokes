@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	   <meta charset="UTF-8">
+	   <meta name="viewport"
+	   content="width=device-width,initial-scale=1.0">
+		<title>HOW IT ALL BEGAN: EXPLORING HUME.AI</title>
+	</head>
+	<body id="top">
+	  <div class="page-wrapper">
+	   <div class="page-container">
+		<header>
+		  <h1 class="cream-bg">HOW IT ALL BEGAN: EXPLORING HUME.AI</h1>
+
+		  <nav>
+		   <ul>
+			<li><a href="#Introduction">Introduction</a></li>
+			<li><a href="#Process">Process</a></li>
+			<li><a href="#Examples">Examples</a></li>
+			<li><a href="#Contact">Contact</a></li>
+		   </ul>
+		  </nav>
+		</header>
+		
+		
+		<section id="Introduction">
+		 <h2>Introduction</h2>
+		  <p><b>Sentence Analysis</b><i>– "I am a digital living experiment"</i></p>
+
+		  <p>"The first sentence analysed in the project, 'I am a digital living experiment,' serves as a foundation to explore AI's ability to empathise. This Artwork/film visualises AI's emotional interpretation of the sentence, using soundscapes and multimodal graphs to translate chatbot responses into artistic forms."</p>
+		</section>
+
+		<main>
+		  <section id="Process">
+				<div class="video-container">
+					<iframe
+						src="https://player.vimeo.com/video/902215166"
+						frameborder="0"
+						allow="autoplay; fullscreen; picture-in-picture"
+						allowfullscreen
+						title="Exploring Hume.AI Process Video">
+					</iframe>
+				</div>
+				
+			<p>My goal was to find a leading force in developing empathetic AI. Hume.AI emerged as the solution, utilising semantic space theory and machine learning to explore human emotional expression. With Hume.AI as the foundation, I built an emotional multi-modal graph, testing AI's growth in empathy. which included speech prosody analysis, emotive language interpretation, and sound analysis using stable audio prompts. Shaping analysis was conducted with Poe.com. Hume.AI offers comprehensive models and datasets to analyse emotional expression in speech, facial expressions, and reactions.</p>
+		  </section>
+		  
+		  <section id="Examples">
+			<h2>Project visuals</h2>
+			<figure class="image-container">
+			  <img src="images/visualization-emotional-patterns.jpg" alt="Emotion AI Visualisation results 1">
+			  <figcaption>Visualisation of emotional patterns detected by hume.ai</figcaption>
+			</figure>
+		
+		  
+	   <p>When I started exploring Hume.AI, I was blown away. Each word, each sentence could be broken down and understood as a separate emotion. It was wild to see how language, the way we speak, could be analyzed and dissected in such a methodical, almost surgical way. But this was the turning point. We, as human beings, like to think of ourselves as unique—that our emotions, the way we feel, are almost otherworldly, beyond explanation. Yet, here we are, creating a virtual entity that can hold conversations that feel almost human. Conversations that can evoke real emotions—sadness, happiness, even moments of connection. And it's all happening through the understanding of words, broken down to their core, creating emotional depth in a way I never expected.</p>
+
+	   	  
+			<figure class="image-container">
+			  <img src="images/prompts-outcomes.jpg" alt="Emotion AI Visualisation results 2">
+			  <figcaption>Prompts and visual outcomes</figcaption>
+			</figure>
+		  
+		  
+			<figure class="image-container">
+			  <img src="images/hume-ai.jpg" alt="Emotion AI Visualisation results 3">
+			  <figcaption>Hume.AI</figcaption>
+			</figure>
+		  </section>
+		</main>
+		
+		<hr class="dotted-divider">
+			
+		<footer>
+			<p id="Contact">Contact me at: <a href="mailto:heidistokes2001@yahoo.co.uk">heidistokes2001@yahoo.co.uk</a></p>
+			<p><a href="#top">Back to top</a></p>
+		</footer>
+	   </div>
+	  </div>
+	</body>
+</html>
