@@ -25,7 +25,7 @@ body {
 ---------------------------------*/
 
 .page-wrapper {
-    max-width: 610px;
+    max-width: 650px;  /* Changed from 610px */
     margin: 10px auto;
     border: 2px dashed #3498db;
     border-radius: 35px;
@@ -34,7 +34,7 @@ body {
 }
 
 .page-container {
-    max-width: 600px;
+    max-width: 100%;   /* Changed from 600px - let it fill the wrapper */
     margin: 0 auto;
     border: 2px solid #2980b9;
     border-radius: 30px;
