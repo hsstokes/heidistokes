@@ -4,7 +4,8 @@
 	   <meta charset="UTF-8">
 	   <meta name="viewport"
 	   content="width=device-width,initial-scale=1.0">
-		<title>HOW IT ALL BEGAN: EXPLORING HUME.AI</title>
+	   <title>HOW IT ALL BEGAN: EXPLORING HUME.AI</title>
+       <link rel="stylesheet" href="css/styles.css">
 	</head>
 	<body id="top">
 		<div class="page-container">
