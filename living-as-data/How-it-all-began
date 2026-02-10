@@ -7,20 +7,30 @@
 		<title>HOW IT ALL BEGAN: EXPLORING HUME.AI</title>
 	</head>
 	<body id="top">
-	  <div class="page-wrapper">
-	   <div class="page-container">
+		<div class="page-container">
+		
+		  <div class="notebook-clip clip-left"></div>
+		  <div class="notebook-clip clip-right"></div>
+			
+	 <div class="content-box">
 		<header>
-		  <h1 class="cream-bg">HOW IT ALL BEGAN: EXPLORING HUME.AI</h1>
-
-		  <nav>
-		   <ul>
-			<li><a href="#Introduction">Introduction</a></li>
-			<li><a href="#Process">Process</a></li>
-			<li><a href="#Examples">Examples</a></li>
-			<li><a href="#Contact">Contact</a></li>
-		   </ul>
-		  </nav>
+		  <h1>How-it-all-began</h1>
 		</header>
+    </div>
+
+	<nav>
+		<ul>
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="../living-as-data.html">Living as Data</a></li>
+			<li><a href="multimodal-graph.html">Multimodal Graph</a></li>
+			<li><a href="replika-study.html">Replika Study</a></li>
+			<li><a href="uncanny-valley-1.html">Uncanny Valley</a></li>
+			<li><a href="understanding-emotions.html">Understanding Emotions</a></li>
+			<li><a href="woebot-expanded.html">Woebot Extended</a></li>
+			<li><a href="woebot-health.html">Woebot Health</a></li>
+			<li><a href="tactile-thresholds.html">Tactile thresholds</a></li>
+		</ul>
+	</nav>
 		
 		
 		<section id="Introduction">
