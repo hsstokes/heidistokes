@@ -738,6 +738,8 @@ body {
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
     padding: 10px;
     background: #f5e9c9;
+    outline: 2px dotted #2980b9;
+    outline-offset: 4px;
 }
 
 .image-grid {
