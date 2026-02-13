@@ -251,6 +251,39 @@
             font-size: 12px;
         }
 
+        .bio-intro {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .bio-text {
+            flex: 1;
+        }
+
+        .bio-image {
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .bio-image img {
+            width: 250px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Stack on mobile */
+        @media (max-width: 768px) {
+            .bio-intro {
+                flex-direction: column;
+            }
+            
+            .bio-image img {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
         @media (max-width: 600px) {
             .about-grid {
                 grid-template-columns: 1fr;
