@@ -6,61 +6,256 @@
     <title>Biography - Heidi Stokes</title>
     <link rel="stylesheet" href="living-as-data/css/styles.css">
     <style>
-        /*-----------------------------------
-        BIOGRAPHY - ABOUT GRID
-        ---------------------------------*/
+        /* Additional Biography Page Styles */
+        .bio-intro {
+            background-color: #f5e9c9;
+            border: 2px dashed #3498db;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .bio-intro p {
+            border: none;
+            background: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .bio-intro p:last-child {
+            margin-bottom: 0;
+        }
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
-            margin-top: 15px;
+            margin: 20px 0;
         }
 
-        .about-grid .info-item {
+        .about-item {
             background-color: #f9f2e2;
             border: 2px dotted #2980b9;
             border-radius: 10px;
             padding: 12px;
         }
 
-        .about-grid .info-label {
-            font-size: 11px;
-            font-weight: 600;
+        .about-label {
+            font-weight: bold;
             color: #3498db;
+            font-size: 11px;
             text-transform: uppercase;
+            display: block;
             margin-bottom: 5px;
         }
 
-        .about-grid .info-value {
-            font-size: 13px;
-            color: #2c3e50;
+        .section-header {
+            background-color: #3498db;
+            color: white;
+            border-radius: 15px;
+            padding: 12px 20px;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        .about-grid a {
+        .year-accordion {
+            margin-bottom: 10px;
+            border: 2px dotted #2980b9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .year-accordion summary {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            list-style: none;
+            padding: 12px 15px;
+            background-color: #f5e9c9;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .year-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .year-accordion summary::before {
+            content: "▶";
+            font-size: 10px;
+            color: #3498db;
+            transition: transform 0.3s;
+        }
+
+        .year-accordion[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .year-accordion[open] summary {
+            border-bottom: 2px dotted #2980b9;
+        }
+
+        .year-label {
+            background-color: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        .event-count {
+            background-color: #9b59b6;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            margin-left: auto;
+        }
+
+        .year-content {
+            padding: 15px;
+            background-color: #f9f2e2;
+        }
+
+        .timeline-event {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+
+        .event-film {
+            color: #9b59b6;
+            font-weight: bold;
+        }
+
+        .event-venue {
+            color: #2c3e50;
+            font-style: italic;
+        }
+
+        .event-location {
+            color: #7f8c8d;
+            font-size: 11px;
+        }
+
+        .event-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+
+        .event-tag.award {
+            background-color: rgba(241, 196, 15, 0.3);
+            color: #b8860b;
+        }
+
+        .event-tag.screening {
+            background-color: rgba(52, 152, 219, 0.2);
+            color: #2980b9;
+        }
+
+        .event-tag.exhibition {
+            background-color: rgba(155, 89, 182, 0.2);
+            color: #8e44ad;
+        }
+
+        .event-tag.selection {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+        }
+
+        .event-tag.competition {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #c0392b;
+        }
+
+        .event-tag.bafta {
+            background-color: rgba(241, 196, 15, 0.4);
+            color: #8b6914;
+            font-weight: bold;
+        }
+
+        .event-tag.oscar {
+            background-color: rgba(241, 196, 15, 0.5);
+            color: #8b6914;
+            font-weight: bold;
+        }
+
+        .event-link {
+            display: block;
+            margin-top: 5px;
+            font-size: 10px;
             color: #3498db;
             word-break: break-all;
+            text-decoration: none;
         }
 
-        /*-----------------------------------
-        BIOGRAPHY - GRANTS LIST
-        ---------------------------------*/
+        .event-link:hover {
+            text-decoration: underline;
+        }
 
-        .grants-list ul {
-            list-style: disc;
-            padding-left: 25px;
+        .grants-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .grants-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #f1c40f;
+            border-radius: 5px;
+            padding: 10px 15px;
             margin-bottom: 8px;
+            font-size: 12px;
         }
 
-        @media (max-width: 480px) {
+        .grant-year {
+            background-color: #f1c40f;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .publications-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .publications-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #9b59b6;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
             .about-grid {
                 grid-template-columns: 1fr;
             }
         }
-   
     </style>
 </head>
 <body id="top">
@@ -83,20 +278,20 @@
 
         <main>
             <!-- Bio Introduction -->
-                <section id="bio-header">
-                    <div class="highlighted-section">
-                        <div class="bio-intro">
-                            <div class="bio-text">
-                                <p><strong>Heidi Stokes</strong> is a Multimedia artist with an MA in Fine Art from Central St Martins. Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society.</p>
-                                <p>Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world.</p>
-                                <p>Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
-                            </div>
-                            <figure class="bio-image">
-                                <img src="images/heidistokes.jpg" alt="Heidi Stokes">
-                            </figure>
+            <section id="bio-header">
+                <div class="highlighted-section">
+                    <div class="bio-intro">
+                        <div class="bio-text">
+                            <p><strong>Heidi Stokes</strong> is a Multimedia artist with an MA in Fine Art from Central St Martins. Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society.</p>
+                            <p>Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world.</p>
+                            <p>Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
                         </div>
+                        <figure class="bio-image">
+                            <img src="images/heidistokes.jpg" alt="Heidi Stokes">
+                        </figure>
                     </div>
-                </section>
+                </div>
+            </section>
 
                 <div class="about-grid">
                     <div class="about-item">
