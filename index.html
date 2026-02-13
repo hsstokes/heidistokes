@@ -251,6 +251,35 @@
             font-size: 12px;
         }
 
+        .bio-intro {
+        align-items: flex-start;
+        }
+
+        .bio-text {
+            flex: 1;
+        }
+
+        .bio-image {
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .bio-image img {
+           border: 3px solid #2a9d8f;
+        }
+
+        /* Stack on mobile */
+        @media (max-width: 768px) {
+            .bio-intro {
+                flex-direction: column;
+            }
+            
+            .bio-image img {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
         @media (max-width: 600px) {
             .about-grid {
                 grid-template-columns: 1fr;
@@ -278,19 +307,18 @@
 
         <main>
             <!-- Bio Introduction -->
-            <section>
-                <div class="bio-intro">
-                    <p><b>Heidi Stokes</b> is a Multimedia artist with an <i>MA in Fine Art from Central St Martins</i>. Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society.</p>
-                    <p>Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world.</p>
-                    <p>Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
-                </div>
-
-                <section id="bio-image">
+                <section id="bio-header">
                     <div class="highlighted-section">
-                        <div class="subtitle">Heidi Stokes</div>
-                        <figure class="image-container">
-                                <img src="images/heidistokes.jpg" alt="sketchbook">
-                        </figure>
+                        <div class="bio-intro">
+                            <div class="bio-text">
+                                <p><strong>Heidi Stokes</strong> is a Multimedia artist with an MA in Fine Art from Central St Martins. Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society.</p>
+                                <p>Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world.</p>
+                                <p>Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
+                            </div>
+                            <figure class="bio-image">
+                                <img src="images/heidistokes.jpg" alt="Heidi Stokes">
+                            </figure>
+                        </div>
                     </div>
                 </section>
 
