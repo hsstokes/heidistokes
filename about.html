@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biography - Heidi Stokes</title>
+    <link rel="stylesheet" href="living-as-data/css/styles.css">
+    <style>
+        /* Additional Biography Page Styles */
+        .bio-intro {
+            background-color: #f5e9c9;
+            border: 2px dashed #3498db;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .bio-intro p {
+            border: none;
+            background: none;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .bio-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .about-item {
+            background-color: #f9f2e2;
+            border: 2px dotted #2980b9;
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .about-label {
+            font-weight: bold;
+            color: #3498db;
+            font-size: 11px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .section-header {
+            background-color: #3498db;
+            color: white;
+            border-radius: 15px;
+            padding: 12px 20px;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .year-accordion {
+            margin-bottom: 10px;
+            border: 2px dotted #2980b9;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .year-accordion summary {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            list-style: none;
+            padding: 12px 15px;
+            background-color: #f5e9c9;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .year-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .year-accordion summary::before {
+            content: "▶";
+            font-size: 10px;
+            color: #3498db;
+            transition: transform 0.3s;
+        }
+
+        .year-accordion[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .year-accordion[open] summary {
+            border-bottom: 2px dotted #2980b9;
+        }
+
+        .year-label {
+            background-color: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        .event-count {
+            background-color: #9b59b6;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            margin-left: auto;
+        }
+
+        .year-content {
+            padding: 15px;
+            background-color: #f9f2e2;
+        }
+
+        .timeline-event {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+
+        .event-film {
+            color: #9b59b6;
+            font-weight: bold;
+        }
+
+        .event-venue {
+            color: #2c3e50;
+            font-style: italic;
+        }
+
+        .event-location {
+            color: #7f8c8d;
+            font-size: 11px;
+        }
+
+        .event-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+
+        .event-tag.award {
+            background-color: rgba(241, 196, 15, 0.3);
+            color: #b8860b;
+        }
+
+        .event-tag.screening {
+            background-color: rgba(52, 152, 219, 0.2);
+            color: #2980b9;
+        }
+
+        .event-tag.exhibition {
+            background-color: rgba(155, 89, 182, 0.2);
+            color: #8e44ad;
+        }
+
+        .event-tag.selection {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #27ae60;
+        }
+
+        .event-tag.competition {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #c0392b;
+        }
+
+        .event-tag.bafta {
+            background-color: rgba(241, 196, 15, 0.4);
+            color: #8b6914;
+            font-weight: bold;
+        }
+
+        .event-tag.oscar {
+            background-color: rgba(241, 196, 15, 0.5);
+            color: #8b6914;
+            font-weight: bold;
+        }
+
+        .event-link {
+            display: block;
+            margin-top: 5px;
+            font-size: 10px;
+            color: #3498db;
+            word-break: break-all;
+            text-decoration: none;
+        }
+
+        .event-link:hover {
+            text-decoration: underline;
+        }
+
+        .grants-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .grants-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #f1c40f;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .grant-year {
+            background-color: #f1c40f;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .publications-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .publications-list li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left: 4px solid #9b59b6;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+
+        .bio-intro {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .bio-text {
+            flex: 1;
+        }
+
+        .bio-image {
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .bio-image img {
+            width: 250px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Stack on mobile */
+        @media (max-width: 768px) {
+            .bio-intro {
+                flex-direction: column;
+            }
+            
+            .bio-image img {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <div class="page-container">
+        <div class="notebook-clip clip-left"></div>
+        <div class="notebook-clip clip-right"></div>
+
+        <header>
+            <h1>BIOGRAPHY</h1>
+            
+            <nav>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="animations.html">Animations</a></li>
+                    <li><a href="index.html">Living as Data</a></li>
+                    <li><a href="unhindered-ai.html">Unhindered AI</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Bio Introduction -->
+            <section id="bio-header">
+                <div class="highlighted-section">
+                    <div class="bio-intro">
+                        <div class="bio-text">
+                            <p><strong>Heidi Stokes</strong> is a Multimedia artist with an MA in Fine Art from Central St Martins. Her work spans various media, including film, drawing, collage, animation, interactive touch boards, and more recently explores themes related to technology and society.</p>
+                            <p>Notable works include "Swim to Work." Heidi was a finalist for the BOC emerging artist awards. Her films have been showcased internationally at institutions like the ICA and Barbican, and in numerous internationally recognized film festivals around the world.</p>
+                            <p>Her recent practice explores the intersection of art and digital culture. Heidi has in recent years collaborated with experts in artificial intelligence and computer science, particularly focusing on AI's emotional and empathetic capabilities.</p>
+                        </div>
+                        <figure class="bio-image">
+                            <img src="images/heidistokes.jpg" alt="Heidi Stokes">
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+                <div class="about-grid">
+                    <div class="about-item">
+                        <span class="about-label">Born</span>
+                        Dover
+                    </div>
+                    <div class="about-item">
+                        <span class="about-label">Lives</span>
+                        Folkestone
+                    </div>
+                    <div class="about-item">
+                        <span class="about-label">Education</span>
+                        MA Fine Art, Central St Martins 2001
+                    </div>
+                    <div class="about-item">
+                        <span class="about-label">Contact</span>
+                        <a href="mailto:heidistokes2001@yahoo.co.uk">heidistokes2001@yahoo.co.uk</a>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- Screenings & Exhibitions Timeline -->
+            <div class="section-header">Screenings, Exhibitions & Festivals</div>
+
+            <!-- 2025 -->
+            <details class="year-accordion" open>
+                <summary>
+                    <span class="year-label">2025</span>
+                    <span class="event-count">1 event</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">Science Gallery - CONSCIOUSNESS Open Call</span><br>
+                        <span class="event-location">Science Gallery Monterrey</span>
+                        <span class="event-tag award">Shortlisted Finalist</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2024 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2024</span>
+                    <span class="event-count">3 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"Unhindered AI"</span> — <span class="event-venue">Labocine October Issue: THE ECOSYSTEM</span><br>
+                        <span class="event-location">Film program exploring how diversity fuels the interconnectedness of life.</span>
+                        <span class="event-tag selection">Official Selection</span>
+                        <a href="https://www.labocine.com/issues/the-ecosystem" target="_blank" class="event-link">labocine.com/issues/the-ecosystem</a>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Storytellers + Machines 2024</span><br>
+                        <span class="event-location">Modal Gallery, Manchester Metropolitan University | SODA Building | 14 Higher Chatham St | Manchester | M15 6ED</span>
+                        <span class="event-tag exhibition">Exhibition & Presentation</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">The Alpine Fellowship Visual Arts Prize 2024</span><br>
+                        <span class="event-location">Shortlisted from 50 entries out of 1,800 applicants from around the world</span>
+                        <span class="event-tag award">Shortlisted</span>
+                        <a href="https://alpinefellowship.com/visual-art-prize" target="_blank" class="event-link">alpinefellowship.com/visual-art-prize</a>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2023 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2023</span>
+                    <span class="event-count">6 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"Unhindered AI"</span> — <span class="event-venue">Pick of the Week on Labocine</span><br>
+                        <span class="event-location">Labocine is a singular, ever-evolving, hybrid streaming platform that showcases science in cinema.</span>
+                        <span class="event-tag award">Pick of the Week</span>
+                        <a href="https://www.labocine.com/films/unhindered-ai" target="_blank" class="event-link">labocine.com/films/unhindered-ai</a>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Unhindered AI"</span> — <span class="event-venue">King's College London Screening</span><br>
+                        <span class="event-location">Wednesday 11th October, 18:00-19:30 | Strand Campus, Level 6, Anatomy Lecture Theatre K6.29 | Hosted by Department of Digital Humanities</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Fourth Wall Folkestone: A Retrospective</span><br>
+                        <span class="event-location">Fri 08 Sep 7-9pm, Sat 09 – Mon 11 Sep 12-4pm</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Folkestone Fringe and FAIL Institute (Fine Arts Institute Leipzig)</span><br>
+                        <span class="event-location">Sunday 29 July 4pm-8pm | Urban Room Folkestone</span>
+                        <span class="event-tag exhibition">Event</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Unhindered AI"</span> — <span class="event-venue">Fourthwall Folkestone Exhibition/Talks</span><br>
+                        <span class="event-location">27th-30th October | Collaboration with Dr Mercedes Bunz | With thanks to King's College London & Creative AI Lab</span>
+                        <span class="event-tag exhibition">Exhibition & Talks</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Animation Nights New York 2023</span><br>
+                        <span class="event-location">June Program "STANDING OUT" (Program #83 | Season 8) | Sunday, June 25, 2023</span>
+                        <span class="event-tag competition">In Competition</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2022 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2022</span>
+                    <span class="event-count">6 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">Cardiff Animation Nights</span><br>
+                        <span class="event-location">Thu 7th December, 19:30-22:30 | The Underdog, Guildhall Place, Cardiff CF10 1EB</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">7th Animation Marathon (Online)</span><br>
+                        <span class="event-location">28-30 November 2022 | Athens</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Weekly Planner"</span> — <span class="event-venue">8th REX Animation Festival</span><br>
+                        <span class="event-location">5th November 2022, 2pm | Zita Cinema, Stockholm, Sweden</span>
+                        <span class="event-tag selection">European Film Program</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">17th Athens Animfest (Online)</span><br>
+                        <span class="event-location">17th-20th March 2022</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Weekly Planner"</span> — <span class="event-venue">MONSTRA | Lisbon Animation Festival 2022</span><br>
+                        <span class="event-location">16th-27th March 2022 | Special panorama screening of best animation from around the world</span>
+                        <span class="event-tag selection">Best of World Animation</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Weekly Planner"</span> — <span class="event-venue">19th IN THE PALACE International Short Film Festival</span><br>
+                        <span class="event-location">31st May - 7th June 2022 | Palace of Culture, Pernik, Bulgaria</span>
+                        <span class="event-tag oscar">Academy Award® Qualifying</span>
+                        <span class="event-tag award">Best Experimental</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2021 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2021</span>
+                    <span class="event-count">4 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">VIS Vienna Shorts / FeKK Festival</span><br>
+                        <span class="event-location">Thursday 19/8, 10:15 | Slovenian Cinematheque</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">Best of CAF2020 at Chapter Arts Centre</span><br>
+                        <span class="event-location">Sunday 25th July 2021, 4pm | Cardiff | Shorts program "Mind"</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Pointless"</span> — <span class="event-venue">Demetera International Short Film Festival 2021</span><br>
+                        <span class="event-location">10/03/2021 - 17/03/2021</span>
+                        <span class="event-tag selection">Official Selection - Animated Short</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Pointless"</span> — <span class="event-venue">WeVe TV Launch</span><br>
+                        <span class="event-location">2nd April 2021</span>
+                        <span class="event-tag screening">Online Premiere</span>
+                        <a href="https://www.youtube.com/wevetv" target="_blank" class="event-link">youtube.com/wevetv</a>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2020 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2020</span>
+                    <span class="event-count">6 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">British Film / Short Film and New Talent 2020</span><br>
+                        <span class="event-location">British Council Archive</span>
+                        <span class="event-tag award">Travel Grant Awarded</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Pointless"</span> — <span class="event-venue">IPFF Peculiar-Eyed Online Selection</span><br>
+                        <span class="event-location">17th-19th November 2020 | Cinenso.com</span>
+                        <span class="event-tag screening">Online Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">Cardiff Animation Festival 2020 Online</span><br>
+                        <span class="event-location">October 24, 2020 | SHORTS 1: MIND</span>
+                        <span class="event-tag competition">In Competition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"At a Distance"</span> — <span class="event-venue">VIRAL Online Exhibition</span><br>
+                        <span class="event-location">Kyle Marks Projects | During Covid-19</span>
+                        <span class="event-tag exhibition">Online Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Pointless" (Poster)</span> — <span class="event-venue">Picture Palace: TRANSITION TWO</span><br>
+                        <span class="event-location">8 March - 5 April 2020 | Works on paper by over 100 artists</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                        <a href="https://www.transitiongallery.co.uk/htmlpages/future.htm" target="_blank" class="event-link">transitiongallery.co.uk</a>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Pointless"</span> — <span class="event-venue">15th Athens Animfest</span><br>
+                        <span class="event-location">Sunday 22/03/2020, 12:00-14:00 | Cine Drasi, Vrilissia | Available online in Greece 6-8th November</span>
+                        <span class="event-tag selection">Official Selection</span>
+                        <a href="https://athensanimfest.eu/2020/en/news/5/" target="_blank" class="event-link">athensanimfest.eu</a>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Centre Pompidou's Web Series "MON ŒIL"</span><br>
+                        <span class="event-location">Episode 167 | Available for three months</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2019 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2019</span>
+                    <span class="event-count">7 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">International Film Festival of Wales</span><br>
+                        <span class="event-location">30th November 2019 | Cineworld, Cardiff</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">Animation Marathon</span><br>
+                        <span class="event-location">21st-24th November 2019 | Athens, Greece</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">ANIMEST - Bucharest International Animation Film Festival</span><br>
+                        <span class="event-location">4-13 October 2019 | Cinematica Eforie & Cinema Elvire Popesco</span>
+                        <span class="event-tag oscar">Oscar® Qualifying</span>
+                        <span class="event-tag competition">In Competition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">Underwire Film Festival</span><br>
+                        <span class="event-location">Sat 14 Sep, 4pm | Barbican Cinema | "Lonely Two-Legged Creatures" programme</span>
+                        <span class="event-tag bafta">BAFTA Recognised</span>
+                        <span class="event-tag competition">UK Premiere</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">Melbourne International Animation Festival (MIAF)</span><br>
+                        <span class="event-location">13-21 July 2019 | The Treasury Cinema</span>
+                        <span class="event-tag competition">In Competition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">VIS Vienna Shorts 2019</span><br>
+                        <span class="event-location">Saturday 1st June, 6pm | Stadtkino im Künstlerhaus | "Animation Avantgarde"</span>
+                        <span class="event-tag oscar">Academy Award® Qualifying</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Critical Popcorn Review</span><br>
+                        <span class="event-location">"We're always on the lookout for interesting, original work..."</span>
+                        <span class="event-tag award">Featured Review</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">Athens Animafest</span><br>
+                        <span class="event-location">Saturday 16/03/2019, 20:00-22:00 | Oikia Theotokopoulou, Athens</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2018 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2018</span>
+                    <span class="event-count">4 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">Natural History Museum Bergen / Viten Film Festival</span><br>
+                        <span class="event-location">September 28th 2018 | Theme: "Upbringing" | Partnership with Researchers' Night</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Short-Film Night, Peckhamplex Cinema</span><br>
+                        <span class="event-location">Monday 17th September 2018 | "Borders and Territories" + Q&A</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">FMX Film Festival Stuttgart</span><br>
+                        <span class="event-location">Thursday 26th April, 09:00-09:30 | "Encounters" programme</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">10th Short Waves Festival</span><br>
+                        <span class="event-location">Wednesday 21.03, 17:00 | Muza Cinema | FOCUS: IN OR OUT / Representing British Animation</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2017 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2017</span>
+                    <span class="event-count">13 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Locomoción Experimental Animation Festival</span><br>
+                        <span class="event-location">26th-29th October 2017 | Centro Cultural Casa Talavera, Mexico City | 4th Edition "Transmutations"</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Animation Marathon</span><br>
+                        <span class="event-location">9th-12th November 2017 | Athens, Greece</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">CUTOUT Fest</span><br>
+                        <span class="event-location">9th-12th November 2017 | Mexico</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Best of MIAF - Shepparton</span><br>
+                        <span class="event-location">Saturday 8th October 2017, 5:30-7:30pm | Shepparton, VIC, Australia</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Animatou International Animation Film Festival</span><br>
+                        <span class="event-location">8th October, 8-9:30pm | Geneva, Switzerland | DOC'ANIM PROG.2</span>
+                        <span class="event-tag selection">International Competition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Encounters Film Festival</span><br>
+                        <span class="event-location">25th September 2017, 12 midday | Watershed, Bristol | Cinema 1</span>
+                        <span class="event-tag bafta">BAFTA Recognised</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Sydney Film Festival</span><br>
+                        <span class="event-location">6-17th June 2017 | Mon 12 Jun, 3:45pm | Event Cinemas George St</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Animation Now! - New Zealand International Animation Festival</span><br>
+                        <span class="event-location">Auckland | Curated by Malcolm Turner</span>
+                        <span class="event-tag award">Shortlisted Finalist</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">British Animation Festival 2017</span><br>
+                        <span class="event-location">Saturday 8th July, 2:30pm | Empire Cinema, Leicester Square</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">East End Film Festival 2017</span><br>
+                        <span class="event-location">Saturday 17th June, 6:15pm | Rich Mix Cinema | "DECISIONS, DECISIONS"</span>
+                        <span class="event-tag competition">In Competition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">Labocine May 2017 Issue: "DIGITAL WORLDS"</span><br>
+                        <span class="event-location">Exploring real-world technologies and their imaginary counterparts</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Melbourne International Animation Festival 2017</span><br>
+                        <span class="event-location">Monday 19th June, 5:15pm | ACMI, Federation Square | International Program 1</span>
+                        <span class="event-tag competition">In Competition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"For Ray"</span> — <span class="event-venue">Athens Digital Arts Festival 2017</span><br>
+                        <span class="event-location">18-21 May | 23 Mitropoleos str, Athens</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">12th Athens Animfest</span><br>
+                        <span class="event-location">Sunday 19/03/2017, 18:15-20:00 | Cinema Trianon | EXPERIMENTAL 1</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2016 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2016</span>
+                    <span class="event-count">7 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">Animation Marathon 2016</span><br>
+                        <span class="event-location">28 Nov - 1 Dec 2016, 18:00-18:50 | ROMANTSO, Athens</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">9th Annual Imagine Science Film Festival</span><br>
+                        <span class="event-location">Wednesday 19th October 2016, 10:00pm | Spectacle Theater, New York</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">The Smalls Film Festival 2016</span><br>
+                        <span class="event-location">2nd-7th September 2016 | Hackney House, London</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">MarKings Festival at UAL</span><br>
+                        <span class="event-location">8th-9th July 2016 | Central Saint Martins & Lethaby Gallery</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">Melbourne International Animation Festival 2016</span><br>
+                        <span class="event-location">19-26 June | ACMI, Federation Square | Installation Animation section</span>
+                        <span class="event-tag competition">In Competition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">Athens Digital Arts Festival 2016</span><br>
+                        <span class="event-location">19-22 May | Athens, Greece</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">Tricky Women - 1st International Women's Animation Film Festival</span><br>
+                        <span class="event-location">March 5th, 15:45 | Metro Cinema Culture House, Vienna | "Work Affairs" category</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Feedback"</span> — <span class="event-venue">London Short Film Festival (LSFF)</span><br>
+                        <span class="event-location">10th January 2016, 4pm | ICA London | "New Shorts: Experiments - Leftfield & Luscious"</span>
+                        <span class="event-tag bafta">BAFTA Recognised</span>
+                        <span class="event-tag selection">Official Selection</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2015 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2015</span>
+                    <span class="event-count">3 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"Discontinued" & "Feedback"</span> — <span class="event-venue">Locomoción Festival de Animación</span><br>
+                        <span class="event-location">5-7 November 2015 | Centro Cultural Universitario Tlatelolco, Mexico City</span>
+                        <span class="event-tag selection">Official Selection - Professional Category</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Discontinued"</span> — <span class="event-venue">XV Festival Internacional de Cortometrajes Cine a la Calle</span><br>
+                        <span class="event-location">8-16 May 2015 | Alianza Francesa de Barranquilla, Colombia</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2014 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2014</span>
+                    <span class="event-count">4 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"Take a Break"</span> — <span class="event-venue">Cinema Museum London</span><br>
+                        <span class="event-location">11th November 2014, 6-10pm | Screening and talk celebrating women filmmakers</span>
+                        <span class="event-tag screening">Screening & Talk</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Take a Break"</span> — <span class="event-venue">DIY Cultures</span><br>
+                        <span class="event-location">25th May 2014, 12-7pm | Rich Mix Cinema, Bethnal Green</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Fabric Utopia Festival / Festival Miden</span><br>
+                        <span class="event-location">July 26, 28 & August 2, 2014 | Andros Island, Greece</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Take a Break"</span> — <span class="event-venue">Tricky Women Festival</span><br>
+                        <span class="event-location">Sun 16.03, 17:30 | English Cinema Haydn, Vienna | "Fair Play" category</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2013 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2013</span>
+                    <span class="event-count">3 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">Videoholica International Video Art Festival 2013</span><br>
+                        <span class="event-location">1-6 August 2013 | Varna, Bulgaria</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Mumia 2013 Experimental Animation Festival</span><br>
+                        <span class="event-location">Brazil</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">ARES International Film and Media Festival / CologneOFF2013</span><br>
+                        <span class="event-location">11-14 July 2013 | Siracusa, Italy</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2012 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2012</span>
+                    <span class="event-count">5 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"Park a Person" & "A Picture of Tomorrow's World"</span> — <span class="event-venue">VAFA International Video Art Festival</span><br>
+                        <span class="event-location">Beijing, China</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Festival Miden Special Presentation in Athens</span><br>
+                        <span class="event-location">1 Dec 2012 - 8 Jan 2013 | La Soirée de Votanique | Curated by Olga Daniylopoulou</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Cologne OFF 2012</span><br>
+                        <span class="event-location">India/Sattal & Philippines/Manila | Video art in a global context</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"A Picture of Tomorrow's World"</span> — <span class="event-venue">Festival Miden</span><br>
+                        <span class="event-location">7th July 2012 | Kalamata, Greece</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Animacall Project 2011</span><br>
+                        <span class="event-location">5-7 July 2012 | Archaeological Museum of Messenia | Parallel event of Festival Miden</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2011 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2011</span>
+                    <span class="event-count">6 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-film">"A Picture of Tomorrow's World"</span> — <span class="event-venue">Rich Mix Cinema / Cabinet of Living Cinema</span><br>
+                        <span class="event-location">21st October 2011 | Bethnal Green, London | Live film score performance</span>
+                        <span class="event-tag screening">Live Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Oasis in an Urban Ditch"</span> — <span class="event-venue">Cologne OFF VII - Beirut</span><br>
+                        <span class="event-location">31 Aug - 3 Sept 2011 | Shams - The Sunflower, Beirut, Lebanon</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Oasis in an Urban Ditch"</span> — <span class="event-venue">Busho - Budapest International Video Art Festival</span><br>
+                        <span class="event-location">1-10 September 2011 | Budapest</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Road Weepers"</span> — <span class="event-venue">Animacall Project 2011</span><br>
+                        <span class="event-location">30 March - 1 May 2011 | Contemporary Art Centre of Thessaloniki, Greece</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"One Person Street"</span> — <span class="event-venue">Candid Projector Room Retrospective</span><br>
+                        <span class="event-location">Thursday 13th January 2011, 7:30pm</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Brick It Up"</span> — <span class="event-venue">"Life's Just Networking" Film Screening</span><br>
+                        <span class="event-location">1st November 2011 | The Duchess, London</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2010 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2010</span>
+                    <span class="event-count">7 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">Angel Moving Image Festival</span><br>
+                        <span class="event-location">1st & 3rd October 2010 | London</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"One Person Street"</span> — <span class="event-venue">Strawberry Short Film Festival</span><br>
+                        <span class="event-location">6-8 August 2010 | Fordham Fest</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"One Person Street"</span> — <span class="event-venue">Fantosfreak Short Film Festival</span><br>
+                        <span class="event-location">17th July 2010 | Parc del Turonet, Spain</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Brick It Up"</span> — <span class="event-venue">Odders Mini Picture Show / FutureEverything Festival</span><br>
+                        <span class="event-location">17th May 2010</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Brick It Up"</span> — <span class="event-venue">Candid Projection Room & Brighton Short Film Event</span><br>
+                        <span class="event-location">20th May 2010 | Achromat Gallery, Brighton</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"Brick It Up"</span> — <span class="event-venue">"Smallest Cinema in the World"</span><br>
+                        <span class="event-location">2-6 March 2010 | Brixton, London</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Unrealized Projects" - Architectural Model Pieces</span><br>
+                        <span class="event-location">23 July - 14 September 2010 | Cornerhouse, Manchester</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2009 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2009</span>
+                    <span class="event-count">4 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">Art Below Zero</span><br>
+                        <span class="event-location">December 2009 | London | Film screening and film still exhibit</span>
+                        <span class="event-tag exhibition">Exhibition & Screening</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-film">"One Person Street"</span> — <span class="event-venue">Recreate Productions</span><br>
+                        <span class="event-location">Selected for distribution and representation</span>
+                        <span class="event-tag award">Distribution Deal</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Guest Projects (Yinka Shonibare's Space)</span><br>
+                        <span class="event-location">December 2009 | London | Film still exhibit</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Life Just Is" Film Screening</span><br>
+                        <span class="event-location">1st October 2009 | The Duchess, London</span>
+                        <span class="event-tag screening">Screening</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2008 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2008</span>
+                    <span class="event-count">3 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">Scene in the Making - Concrete and Grass</span><br>
+                        <span class="event-location">October 2008</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Videophile Open Submission</span><br>
+                        <span class="event-location">October 2008</span>
+                        <span class="event-tag selection">Selected</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Real Life" - Portman Gallery</span><br>
+                        <span class="event-location">March 2008</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2007 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2007</span>
+                    <span class="event-count">1 event</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">"Driven" - Fieldgate Gallery</span><br>
+                        <span class="event-location">June 2007 | London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2006 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2006</span>
+                    <span class="event-count">4 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">"Unrealized Projects" Vol. 1 & 2</span><br>
+                        <span class="event-location">G & A Gallery, Surrey Hills</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Turn to the Left"</span><br>
+                        <span class="event-location">291 Gallery, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">IDEA De-corator Catalogue Project</span><br>
+                        <span class="event-location">London | Text by Sally O'Reilly</span>
+                        <span class="event-tag exhibition">Publication</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">Art and Architecture Competition</span><br>
+                        <span class="event-location">Norwich Art Centre</span>
+                        <span class="event-tag award">Shortlist Nomination</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2004 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2004</span>
+                    <span class="event-count">5 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">"Careful What You Wish For"</span><br>
+                        <span class="event-location">Soup Projects, Sevenseven, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Drawing Project"</span><br>
+                        <span class="event-location">Konti Gallery, Athens, Greece</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Unrealised Projects" Web Show</span><br>
+                        <span class="event-location">Million Miles Per Hour, London</span>
+                        <span class="event-tag exhibition">Online Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Archimedes"</span><br>
+                        <span class="event-location">Great Portland Street, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Sneeze"</span><br>
+                        <span class="event-location">Arch Gallery, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2003 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2003</span>
+                    <span class="event-count">3 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">"Reduced"</span><br>
+                        <span class="event-location">Century Gallery, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Splendid"</span><br>
+                        <span class="event-location">Marshall Street Space, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Souvenir"</span><br>
+                        <span class="event-location">Transition Gallery, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                </div>
+            </details>
+
+            <!-- 2002 -->
+            <details class="year-accordion">
+                <summary>
+                    <span class="year-label">2002</span>
+                    <span class="event-count">2 events</span>
+                </summary>
+                <div class="year-content">
+                    <div class="timeline-event">
+                        <span class="event-venue">"Nth Art"</span><br>
+                        <span class="event-location">Ols & Co. Gallery, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                    <div class="timeline-event">
+                        <span class="event-venue">"Artytechture"</span><br>
+                        <span class="event-location">Transition Gallery, London</span>
+                        <span class="event-tag exhibition">Exhibition</span>
+                    </div>
+                </div>
+            </details>
+
+            <hr class="divider">
+
+            <!-- Grants & Awards -->
+            <div class="section-header">Grants, Awards & Residencies</div>
+
+            <div class="highlight-box">
+                <ul class="grants-list">
+                    <li><span class="grant-year">2019</span> British Council Travel Grant — Vienna Shorts Film Festival</li>
+                    <li><span class="grant-year">2017</span> "For Ray" Shortlisted Finalist — Animation NOW! New Zealand</li>
+                    <li><span class="grant-year">2013-16</span> Practitioner in Residence — London College of Fashion</li>
+                    <li><span class="grant-year">2009</span> Artist Residency — Arts Claims Impulse, Berlin</li>
+                    <li><span class="grant-year">2005</span> Finalist — BOC Emerging Artist Award</li>
+                    <li><span class="grant-year">2005</span> Shortlist Nomination — Norwich Art Centre "Art and Architecture" Competition</li>
+                    <li><span class="grant-year">2005</span> AA2A Artist Residency — Artists Access to Art Colleges, Barnet College</li>
+                    <li><span class="grant-year">2001</span> AHRB Grant Awarded</li>
+                </ul>
+            </div>
+
+            <hr class="divider">
+
+            <!-- Publications -->
+            <div class="section-header">Publications & Catalogues</div>
+
+            <div class="highlight-box">
+                <ul class="publications-list">
+                    <li><strong>IDEA De-corator Catalogue Project</strong> — London (Text by Sally O'Reilly)</li>
+                    <li><strong>"Sneeze" Catalogue</strong> — Arch Gallery</li>
+                    <li><strong>Arty-tecture Summer 2003</strong> — Transition Gallery</li>
+                    <li><strong>THE CUT NEWSPAPER</strong> — LCF December Issue</li>
+                    <li><strong>Unrealised Projects Volume 1-4</strong> — Available at Tate Modern and bookstores</li>
+                    <li><strong>Animacall 2011 Publication</strong> — Thessaloniki, Greece</li>
+                </ul>
+            </div>
+
+        </main>
+
+        <footer>
+            <a href="#top" class="btn">Back to top</a>
+            <p>© 2025 Heidi Stokes</p>
+        </footer>
+    </div>
+</body>
+</html>
