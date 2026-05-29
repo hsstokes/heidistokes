@@ -6,64 +6,79 @@
     <title>Biography - Heidi Stokes</title>
     <link rel="stylesheet" href="living-as-data/css/styles.css">
     <style>
-        /* Additional Biography Page Styles */
+        /* Biography Page — aligned with site design language */
+
         .bio-intro {
-            background-color: #f5e9c9;
-            border: 2px dashed #3498db;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .bio-intro p {
-            border: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: flex-start;
             background: none;
+            border: none;
             padding: 0;
-            margin-bottom: 10px;
-        }
-
-        .bio-intro p:last-child {
             margin-bottom: 0;
         }
 
+        .bio-text { flex: 1; }
+        .bio-text p { border: none; background: none; padding: 0; margin-bottom: 1em; }
+
+        .bio-image { flex-shrink: 0; margin: 0; }
+
+        .bio-image img {
+            width: 220px;
+            height: auto;
+            border-radius: 3px;
+            border: 1px solid var(--warm-border, #ccc7c0);
+            display: block;
+        }
+
+        /* ABOUT GRID */
         .about-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 10px;
             margin: 20px 0;
         }
 
         .about-item {
-            background-color: #f9f2e2;
-            border: 2px dotted #2980b9;
-            border-radius: 10px;
-            padding: 12px;
+            background: white;
+            border: 1px solid var(--warm-border, #ccc7c0);
+            border-radius: 3px;
+            padding: 12px 14px;
+            font-size: 0.85rem;
         }
 
         .about-label {
-            font-weight: bold;
-            color: #3498db;
-            font-size: 11px;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--mid, #8a8580);
+            font-size: 0.62rem;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
             display: block;
             margin-bottom: 5px;
         }
 
+        /* SECTION HEADER */
         .section-header {
-            background-color: #3498db;
-            color: white;
-            border-radius: 15px;
-            padding: 12px 20px;
-            margin: 30px 0 20px 0;
-            text-align: center;
-            font-weight: bold;
-            font-size: 14px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--paper, #f2ede8);
+            background: var(--ink, #1a1a1a);
+            padding: 6px 14px;
+            border-radius: 2px;
+            display: inline-block;
+            margin: 30px 0 18px;
         }
 
+        /* YEAR ACCORDION */
         .year-accordion {
-            margin-bottom: 10px;
-            border: 2px dotted #2980b9;
-            border-radius: 10px;
+            margin-bottom: 4px;
+            border: none;
+            border-bottom: 1px solid var(--warm-border, #ccc7c0);
+            border-radius: 0;
             overflow: hidden;
         }
 
@@ -73,221 +88,175 @@
             gap: 10px;
             cursor: pointer;
             list-style: none;
-            padding: 12px 15px;
-            background-color: #f5e9c9;
-            font-weight: bold;
-            font-size: 13px;
+            padding: 10px 0;
+            background: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--mid, #8a8580);
+            transition: color 0.2s;
         }
 
-        .year-accordion summary::-webkit-details-marker {
-            display: none;
-        }
+        .year-accordion summary::-webkit-details-marker { display: none; }
 
         .year-accordion summary::before {
             content: "▶";
-            font-size: 10px;
-            color: #3498db;
+            font-size: 8px;
+            color: var(--mid, #8a8580);
             transition: transform 0.3s;
+            flex-shrink: 0;
         }
 
-        .year-accordion[open] summary::before {
-            transform: rotate(90deg);
-        }
-
-        .year-accordion[open] summary {
-            border-bottom: 2px dotted #2980b9;
-        }
+        .year-accordion[open] summary::before { transform: rotate(90deg); }
+        .year-accordion[open] summary { color: var(--ink, #1a1a1a); border-bottom: none; }
+        .year-accordion summary:hover { color: var(--ink, #1a1a1a); }
 
         .year-label {
-            background-color: #3498db;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 13px;
+            font-family: 'Space Mono', monospace;
+            background: var(--ink, #1a1a1a);
+            color: var(--paper, #f2ede8);
+            padding: 3px 10px;
+            border-radius: 2px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
         }
 
         .event-count {
-            background-color: #9b59b6;
-            color: white;
+            font-family: 'Space Mono', monospace;
+            background: none;
+            border: 1px solid var(--warm-border, #ccc7c0);
+            color: var(--mid, #8a8580);
             padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 11px;
+            border-radius: 2px;
+            font-size: 0.6rem;
             margin-left: auto;
+            letter-spacing: 0.06em;
         }
 
         .year-content {
-            padding: 15px;
-            background-color: #f9f2e2;
+            padding: 12px 0 16px;
+            background: none;
         }
 
+        /* TIMELINE EVENTS */
         .timeline-event {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-left: 4px solid #3498db;
-            border-radius: 5px;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            font-size: 12px;
-            line-height: 1.6;
+            background: white;
+            border: 1px solid var(--warm-border, #ccc7c0);
+            border-left: 3px solid var(--ink, #1a1a1a);
+            border-radius: 0;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            font-size: 0.82rem;
+            line-height: 1.7;
         }
 
-        .timeline-event:last-child {
-            margin-bottom: 0;
-        }
+        .timeline-event:last-child { margin-bottom: 0; }
 
         .event-film {
-            color: #9b59b6;
-            font-weight: bold;
+            font-family: 'DM Serif Display', serif;
+            font-style: italic;
+            color: var(--ink, #1a1a1a);
+            font-weight: 400;
+            font-size: 0.92rem;
         }
 
         .event-venue {
-            color: #2c3e50;
-            font-style: italic;
+            color: var(--ink, #1a1a1a);
+            font-style: normal;
         }
 
         .event-location {
-            color: #7f8c8d;
-            font-size: 11px;
+            color: var(--mid, #8a8580);
+            font-size: 0.75rem;
+            display: block;
+            margin-top: 2px;
         }
 
+        /* EVENT TAGS — keep colour coding, refine shape */
         .event-tag {
+            font-family: 'Space Mono', monospace;
             display: inline-block;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 10px;
-            margin-top: 5px;
-            margin-right: 5px;
+            padding: 2px 7px;
+            border-radius: 2px;
+            font-size: 0.58rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 6px;
+            margin-right: 4px;
         }
 
-        .event-tag.award {
-            background-color: rgba(241, 196, 15, 0.3);
-            color: #b8860b;
-        }
-
-        .event-tag.screening {
-            background-color: rgba(52, 152, 219, 0.2);
-            color: #2980b9;
-        }
-
-        .event-tag.exhibition {
-            background-color: rgba(155, 89, 182, 0.2);
-            color: #8e44ad;
-        }
-
-        .event-tag.selection {
-            background-color: rgba(46, 204, 113, 0.2);
-            color: #27ae60;
-        }
-
-        .event-tag.competition {
-            background-color: rgba(231, 76, 60, 0.2);
-            color: #c0392b;
-        }
-
-        .event-tag.bafta {
-            background-color: rgba(241, 196, 15, 0.4);
-            color: #8b6914;
-            font-weight: bold;
-        }
-
-        .event-tag.oscar {
-            background-color: rgba(241, 196, 15, 0.5);
-            color: #8b6914;
-            font-weight: bold;
-        }
+        .event-tag.award      { background: rgba(241,196,15,0.2);  color: #8b6914; }
+        .event-tag.screening  { background: rgba(52,152,219,0.12); color: #2371a0; }
+        .event-tag.exhibition { background: rgba(155,89,182,0.12); color: #6d3a8e; }
+        .event-tag.selection  { background: rgba(46,204,113,0.12); color: #1e7e4e; }
+        .event-tag.competition{ background: rgba(231,76,60,0.12);  color: #9c2a1e; }
+        .event-tag.bafta      { background: rgba(241,196,15,0.3);  color: #7a5800; font-weight: 700; }
+        .event-tag.oscar      { background: rgba(241,196,15,0.35); color: #7a5800; font-weight: 700; }
 
         .event-link {
+            font-family: 'Space Mono', monospace;
             display: block;
-            margin-top: 5px;
-            font-size: 10px;
-            color: #3498db;
+            margin-top: 6px;
+            font-size: 0.65rem;
+            color: var(--mid, #8a8580);
             word-break: break-all;
-            text-decoration: none;
-        }
-
-        .event-link:hover {
             text-decoration: underline;
         }
 
-        .grants-list {
+        .event-link:hover { color: var(--ink, #1a1a1a); opacity: 1; }
+
+        /* GRANTS & PUBLICATIONS */
+        .grants-list, .publications-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            border: none;
+            background: none;
         }
 
         .grants-list li {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-left: 4px solid #f1c40f;
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            font-size: 12px;
-        }
-
-        .grant-year {
-            background-color: #f1c40f;
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 10px;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .publications-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            background: white;
+            border: 1px solid var(--warm-border, #ccc7c0);
+            border-left: 3px solid #c9a227;
+            border-radius: 0;
+            padding: 10px 14px;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
         .publications-list li {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-left: 4px solid #9b59b6;
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            font-size: 12px;
+            background: white;
+            border: 1px solid var(--warm-border, #ccc7c0);
+            border-left: 3px solid #7b4fa3;
+            border-radius: 0;
+            padding: 10px 14px;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
-        .bio-intro {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
+        .grant-year {
+            font-family: 'Space Mono', monospace;
+            background: #c9a227;
+            color: white;
+            padding: 2px 7px;
+            border-radius: 2px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            margin-right: 8px;
+            letter-spacing: 0.06em;
         }
 
-        .bio-text {
-            flex: 1;
-        }
-
-        .bio-image {
-            flex-shrink: 0;
-            margin: 0;
-        }
-
-        .bio-image img {
-            width: 250px;
-            height: auto;
-            border-radius: 4px;
-        }
-
-        /* Stack on mobile */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .bio-intro {
-                flex-direction: column;
-            }
-            
-            .bio-image img {
-                width: 100%;
-                max-width: 300px;
-            }
+            .bio-intro { flex-direction: column; }
+            .bio-image img { width: 100%; max-width: 280px; }
         }
 
         @media (max-width: 600px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
+            .about-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -311,7 +280,6 @@
         </header>
 
         <main>
-            <!-- Bio Introduction -->
             <section id="bio-header">
                 <div class="highlighted-section">
                     <div class="bio-intro">
@@ -327,53 +295,43 @@
                 </div>
             </section>
 
-                <div class="about-grid">
-                    <div class="about-item">
-                        <span class="about-label">Born</span>
-                        Dover
-                    </div>
-                    <div class="about-item">
-                        <span class="about-label">Lives</span>
-                        Folkestone
-                    </div>
-                    <div class="about-item">
-                        <span class="about-label">Education</span>
-                        MA Fine Art, Central St Martins 2001
-                    </div>
-                    <div class="about-item">
-                        <span class="about-label">Contact</span>
-                        <a href="mailto:heidistokes2001@yahoo.co.uk">heidistokes2001@yahoo.co.uk</a>
-                    </div>
+            <div class="about-grid">
+                <div class="about-item">
+                    <span class="about-label">Born</span>
+                    Dover
                 </div>
-            </section>
+                <div class="about-item">
+                    <span class="about-label">Lives</span>
+                    Folkestone
+                </div>
+                <div class="about-item">
+                    <span class="about-label">Education</span>
+                    MA Fine Art, Central St Martins 2001
+                </div>
+                <div class="about-item">
+                    <span class="about-label">Contact</span>
+                    <a href="mailto:heidistokes2001@yahoo.co.uk">heidistokes2001@yahoo.co.uk</a>
+                </div>
+            </div>
 
             <hr class="divider">
 
-            <!-- Screenings & Exhibitions Timeline -->
             <div class="section-header">Screenings, Exhibitions & Festivals</div>
 
-                 <!-- 2025 -->
             <details class="year-accordion" open>
-                <summary>
-                    <span class="year-label">2026</span>
-                    <span class="event-count">1 event</span>
-                </summary>
+                <summary><span class="year-label">2026</span><span class="event-count">1 event</span></summary>
                 <div class="year-content">
-                     <div class="timeline-event">
+                    <div class="timeline-event">
                         <span class="event-venue">Sick Of It: The Egg-Xhibition @the_stables_artgallery</span><br>
                         <span class="event-location">Group Show: The Stable Gallery</span>
-                        <span class="event-location"> Fri 27 March - 12th of April. </span>
+                        <span class="event-location">Fri 27 March - 12th of April.</span>
                         <span class="event-tag exhibition">Exhibition</span>
                     </div>
                 </div>
             </details>
 
-            <!-- 2025 -->
             <details class="year-accordion" open>
-                <summary>
-                    <span class="year-label">2025</span>
-                    <span class="event-count">1 event</span>
-                </summary>
+                <summary><span class="year-label">2025</span><span class="event-count">1 event</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">Science Gallery - CONSCIOUSNESS Open Call</span><br>
@@ -383,12 +341,8 @@
                 </div>
             </details>
 
-            <!-- 2024 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2024</span>
-                    <span class="event-count">3 events</span>
-                </summary>
+                <summary><span class="year-label">2024</span><span class="event-count">3 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"Unhindered AI"</span> — <span class="event-venue">Labocine October Issue: THE ECOSYSTEM</span><br>
@@ -410,12 +364,8 @@
                 </div>
             </details>
 
-            <!-- 2023 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2023</span>
-                    <span class="event-count">6 events</span>
-                </summary>
+                <summary><span class="year-label">2023</span><span class="event-count">6 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"Unhindered AI"</span> — <span class="event-venue">Pick of the Week on Labocine</span><br>
@@ -451,12 +401,8 @@
                 </div>
             </details>
 
-            <!-- 2022 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2022</span>
-                    <span class="event-count">6 events</span>
-                </summary>
+                <summary><span class="year-label">2022</span><span class="event-count">6 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">Cardiff Animation Nights</span><br>
@@ -492,12 +438,8 @@
                 </div>
             </details>
 
-            <!-- 2021 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2021</span>
-                    <span class="event-count">4 events</span>
-                </summary>
+                <summary><span class="year-label">2021</span><span class="event-count">4 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">VIS Vienna Shorts / FeKK Festival</span><br>
@@ -523,12 +465,8 @@
                 </div>
             </details>
 
-            <!-- 2020 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2020</span>
-                    <span class="event-count">6 events</span>
-                </summary>
+                <summary><span class="year-label">2020</span><span class="event-count">7 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">British Film / Short Film and New Talent 2020</span><br>
@@ -570,12 +508,8 @@
                 </div>
             </details>
 
-            <!-- 2019 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2019</span>
-                    <span class="event-count">7 events</span>
-                </summary>
+                <summary><span class="year-label">2019</span><span class="event-count">8 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"The Art of Reducing Noise"</span> — <span class="event-venue">International Film Festival of Wales</span><br>
@@ -623,12 +557,8 @@
                 </div>
             </details>
 
-            <!-- 2018 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2018</span>
-                    <span class="event-count">4 events</span>
-                </summary>
+                <summary><span class="year-label">2018</span><span class="event-count">4 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"Feedback"</span> — <span class="event-venue">Natural History Museum Bergen / Viten Film Festival</span><br>
@@ -653,12 +583,8 @@
                 </div>
             </details>
 
-            <!-- 2017 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2017</span>
-                    <span class="event-count">13 events</span>
-                </summary>
+                <summary><span class="year-label">2017</span><span class="event-count">14 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"For Ray"</span> — <span class="event-venue">Locomoción Experimental Animation Festival</span><br>
@@ -734,12 +660,8 @@
                 </div>
             </details>
 
-            <!-- 2016 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2016</span>
-                    <span class="event-count">7 events</span>
-                </summary>
+                <summary><span class="year-label">2016</span><span class="event-count">8 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"Feedback"</span> — <span class="event-venue">Animation Marathon 2016</span><br>
@@ -785,12 +707,8 @@
                 </div>
             </details>
 
-            <!-- 2015 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2015</span>
-                    <span class="event-count">3 events</span>
-                </summary>
+                <summary><span class="year-label">2015</span><span class="event-count">2 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"Discontinued" & "Feedback"</span> — <span class="event-venue">Locomoción Festival de Animación</span><br>
@@ -805,12 +723,8 @@
                 </div>
             </details>
 
-            <!-- 2014 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2014</span>
-                    <span class="event-count">4 events</span>
-                </summary>
+                <summary><span class="year-label">2014</span><span class="event-count">4 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"Take a Break"</span> — <span class="event-venue">Cinema Museum London</span><br>
@@ -835,12 +749,8 @@
                 </div>
             </details>
 
-            <!-- 2013 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2013</span>
-                    <span class="event-count">3 events</span>
-                </summary>
+                <summary><span class="year-label">2013</span><span class="event-count">3 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">Videoholica International Video Art Festival 2013</span><br>
@@ -860,12 +770,8 @@
                 </div>
             </details>
 
-            <!-- 2012 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2012</span>
-                    <span class="event-count">5 events</span>
-                </summary>
+                <summary><span class="year-label">2012</span><span class="event-count">5 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"Park a Person" & "A Picture of Tomorrow's World"</span> — <span class="event-venue">VAFA International Video Art Festival</span><br>
@@ -895,12 +801,8 @@
                 </div>
             </details>
 
-            <!-- 2011 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2011</span>
-                    <span class="event-count">6 events</span>
-                </summary>
+                <summary><span class="year-label">2011</span><span class="event-count">6 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-film">"A Picture of Tomorrow's World"</span> — <span class="event-venue">Rich Mix Cinema / Cabinet of Living Cinema</span><br>
@@ -935,12 +837,8 @@
                 </div>
             </details>
 
-            <!-- 2010 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2010</span>
-                    <span class="event-count">7 events</span>
-                </summary>
+                <summary><span class="year-label">2010</span><span class="event-count">7 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">Angel Moving Image Festival</span><br>
@@ -980,12 +878,8 @@
                 </div>
             </details>
 
-            <!-- 2009 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2009</span>
-                    <span class="event-count">4 events</span>
-                </summary>
+                <summary><span class="year-label">2009</span><span class="event-count">4 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">Art Below Zero</span><br>
@@ -1010,12 +904,8 @@
                 </div>
             </details>
 
-            <!-- 2008 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2008</span>
-                    <span class="event-count">3 events</span>
-                </summary>
+                <summary><span class="year-label">2008</span><span class="event-count">3 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">Scene in the Making - Concrete and Grass</span><br>
@@ -1035,12 +925,8 @@
                 </div>
             </details>
 
-            <!-- 2007 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2007</span>
-                    <span class="event-count">1 event</span>
-                </summary>
+                <summary><span class="year-label">2007</span><span class="event-count">1 event</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">"Driven" - Fieldgate Gallery</span><br>
@@ -1050,12 +936,8 @@
                 </div>
             </details>
 
-            <!-- 2006 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2006</span>
-                    <span class="event-count">4 events</span>
-                </summary>
+                <summary><span class="year-label">2006</span><span class="event-count">4 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">"Unrealized Projects" Vol. 1 & 2</span><br>
@@ -1080,12 +962,8 @@
                 </div>
             </details>
 
-            <!-- 2004 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2004</span>
-                    <span class="event-count">5 events</span>
-                </summary>
+                <summary><span class="year-label">2004</span><span class="event-count">5 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">"Careful What You Wish For"</span><br>
@@ -1115,12 +993,8 @@
                 </div>
             </details>
 
-            <!-- 2003 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2003</span>
-                    <span class="event-count">3 events</span>
-                </summary>
+                <summary><span class="year-label">2003</span><span class="event-count">3 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">"Reduced"</span><br>
@@ -1140,12 +1014,8 @@
                 </div>
             </details>
 
-            <!-- 2002 -->
             <details class="year-accordion">
-                <summary>
-                    <span class="year-label">2002</span>
-                    <span class="event-count">2 events</span>
-                </summary>
+                <summary><span class="year-label">2002</span><span class="event-count">2 events</span></summary>
                 <div class="year-content">
                     <div class="timeline-event">
                         <span class="event-venue">"Nth Art"</span><br>
@@ -1162,14 +1032,13 @@
 
             <hr class="divider">
 
-            <!-- Grants & Awards -->
             <div class="section-header">Grants, Awards & Residencies</div>
 
             <div class="highlight-box">
                 <ul class="grants-list">
                     <li><span class="grant-year">2019</span> British Council Travel Grant — Vienna Shorts Film Festival</li>
                     <li><span class="grant-year">2017</span> "For Ray" Shortlisted Finalist — Animation NOW! New Zealand</li>
-                    <li><span class="grant-year">2013-16</span> Practitioner in Residence — London College of Fashion</li>
+                    <li><span class="grant-year">2013–16</span> Practitioner in Residence — London College of Fashion</li>
                     <li><span class="grant-year">2009</span> Artist Residency — Arts Claims Impulse, Berlin</li>
                     <li><span class="grant-year">2005</span> Finalist — BOC Emerging Artist Award</li>
                     <li><span class="grant-year">2005</span> Shortlist Nomination — Norwich Art Centre "Art and Architecture" Competition</li>
@@ -1180,7 +1049,6 @@
 
             <hr class="divider">
 
-            <!-- Publications -->
             <div class="section-header">Publications & Catalogues</div>
 
             <div class="highlight-box">
