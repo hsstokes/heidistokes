@@ -11,55 +11,61 @@
 	<meta property="og:type" content="article" />
 	<link rel="stylesheet" href="css/styles.css">
 	<title>Lets Read-Listen-observe</title>
+
 	<style>
-	.loose-thoughts-grid {
-	    display: flex;
-	    flex-wrap: wrap;
-	    gap: 30px;
-	    padding: 20px 0;
-	    justify-content: flex-start;
+	.thoughts-list {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		padding: 20px 0;
+		max-width: 700px;
 	}
-		.sticky-note {
-		width: calc((100% - 60px) / 3);
-		min-width: 220px;
-		box-sizing: border-box;
-		min-height: 220px;
-		padding: 24px 20px;
+
+	.thought-item {
 		background: #fdf3c7;
 		box-shadow: 3px 4px 10px rgba(0,0,0,0.15);
+		border-radius: 2px;
+		transform: rotate(-1deg);
+		transition: transform 0.2s ease;
+	}
+	.thought-item:nth-child(2n) { background: #ffd9e8; transform: rotate(1deg); }
+	.thought-item:nth-child(3n) { background: #d9f2d0; transform: rotate(-0.5deg); }
+	.thought-item:nth-child(4n) { background: #cfe8ff; transform: rotate(1.5deg); }
+	.thought-item[open] { transform: rotate(0deg); }
+
+	.thought-item summary {
+		list-style: none;
+		cursor: pointer;
+		padding: 14px 20px;
+		font-family: 'Space Mono', monospace;
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		opacity: 0.7;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.thought-item summary::-webkit-details-marker { display: none; }
+	.thought-item summary::after {
+		content: '+';
+		font-size: 1rem;
+		opacity: 0.6;
+		transition: transform 0.2s ease;
+	}
+	.thought-item[open] summary::after {
+		transform: rotate(45deg);
+	}
+
+	.thought-item .thought-content {
+		padding: 0 20px 20px;
 		font-family: 'IBM Plex Mono', monospace;
 		font-size: 0.85rem;
 		line-height: 1.6;
 		color: var(--ink);
-		position: relative;
-		transform: rotate(-2deg);
-		transition: transform 0.2s ease;
-	}
-	.sticky-note:nth-child(2n) { background: #ffd9e8; transform: rotate(1.5deg); }
-	.sticky-note:nth-child(3n) { background: #d9f2d0; transform: rotate(-1deg); }
-	.sticky-note:nth-child(4n) { background: #cfe8ff; transform: rotate(2deg); }
-	.sticky-note:hover { transform: rotate(0deg) scale(1.02); z-index: 5; }
-	.sticky-note::before {
-	    content: '';
-	    position: absolute;
-	    top: -10px;
-	    left: 50%;
-	    transform: translateX(-50%) rotate(-3deg);
-	    width: 50px;
-	    height: 18px;
-	    background: rgba(255,255,255,0.5);
-	    border: 1px solid rgba(0,0,0,0.05);
-	}
-	.sticky-note-date {
-	    font-family: 'Space Mono', monospace;
-	    font-size: 0.6rem;
-	    text-transform: uppercase;
-	    letter-spacing: 0.08em;
-	    opacity: 0.5;
-	    margin-bottom: 10px;
-	    display: block;
 	}
 	</style>
+
 </head>
 <body id="top">
 	<div class="page-container">
@@ -676,40 +682,52 @@
 					<h2>Loose Thoughts</h2>
 					<p>Recording my randomised ideas to help with creative thinking.</p>
 				</div>
-				<div class="loose-thoughts-grid">
-					<div class="sticky-note">
-						<span class="sticky-note-date">16 July 2026</span>
-						The more I interact with machines, the more I can discern that humans want to be like machines, but they aren't. And what I mean by this is that we create systems and structures that are formulaic, organised. And yet as embodied beings, our thinking perhaps best occurs when we're not thinking at all, when we haven't structured it into a planned hour, when it just happens. Some of the best inventions and ideas have often happened just going for a walk, or doing something entirely different. But in the day-to-day, we don't really accommodate this, because we've created a rhythm of nine to five, and weekends off.
-					</div>
-					<div class="sticky-note">
-						<span class="sticky-note-date">16 July 2026</span>
-						To formulate ideas, AI is very good at helping the blurred dot become more focused. But be careful to use it as your sketchbook, not the outcome. Once the idea has formed, go out into the world, let it sit, reflect, and absorb its form.
-					</div>
-					<div class="sticky-note">
-						<span class="sticky-note-date">16 July 2026</span>
-						I don't know. Can we really tell, through language, what a bot thinks, or should I say calculates? Probably not. Language is just the icing on the cake, the embellishment, but the making of the cake is the bit that is invisible when having an AI-based conversation. It's just computation to a bot, pattern matching and the language of maths. It's that bit that interests me, and in response to Arunav's suggestion, can we expect AI to have the same representations and understanding of emotions through language alone? I would again say probably not.
-					</div>
-					<div class="sticky-note">
-						<span class="sticky-note-date">17 July 2026</span>
-						Initially, when I developed this project, I wanted to find a language to translate AI's understanding of emotions. I thought this would reveal what knowledge they have in this area. To some degree, it did. But ultimately, it's just a reflection of the data we've provided. And in some senses, it does illustrate the evolving development within previous work I've done. But now I encounter a conundrum, because as I've developed alongside the same AI future as everyone else, my relationship with AI has changed, and I'm now trying to navigate how we work together. 
-						The work is simply a reflection of that, but looking at emotions. So I think the question that arises from the work now is not how I can translate how AI understands emotions, but how different entities collaborating on understanding emotion can either hinder or enhance human development.
-					</div>
-					<div class="sticky-note">
-						<span class="sticky-note-date">16 August 2026</span>
-						I’m currently reading All Brain and No Soul by Richard A. Hunt. Having read just a paragraph, I'm already reflecting on what it means to be slow in contrast to an Ai entity that is extremely fast. 
-						A couple of years back, Mercedes Bunz ( a professor, writer, and lecturer at King’s College ),asked me to collaborate and make an art-based animation film about artificial intelligence. At the time I knew nothing about AI, but I was fascinated by how humans adjust to new technology, so I took on the task willingly. As the project evolved, so did my entanglement with AI. I quickly learned that tasks which would once have taken days could suddenly be done in seconds, at the flick of a mouse.
-						The adrenaline rush was intoxicating, but it came at a cost. I got more done, but, like scrolling a social media feed, there was a glint of feeling I had never quite done enough, or that what I’d done, on reflection, felt unsatisfactory. Humans need goals, but they also need struggle to make those goals compelling and nourishing.
-						So what I take from my involvement with AI, and from Richard A. Hunt’s introduction on how humans understand what is human in an AI-driven world, is this: slowness is not something to berate, but something to celebrate.
-					</div>
-					<div class="sticky-note">
-						<span class="sticky-note-date">17 August 2026</span>
-						After completing the first chapter of "Robert A. Hunt's All Brain and No Soul", I felt I had been transported through light years of information. 
-						In a voice narrated by the writer himself, the words flowed easily, and I was reminded of the days he mentioned giving sermons as a priest.
-						His tone and voice speak simply and clearly, narrating every idea with precision and ease. He talks about the evolution of our understanding of where we sit in the universe, and as the years progress and the concepts gain traction and weight, the universe seems to get further and further away. Since as far as we can calculate, humans have always maintained that we are at the centre of everything, and we have gleefully created concepts to reinforce this principle. 
-						This has clearly not been the case, and scientific studies, over the years, have further validated that the universe is expanding at a speed we cannot even fathom. We are but a tiny blip, and as everything around us expands, we just get smaller. So where does this leave us, perhaps, as we have always been, curious seekers with an arrogant twang, fighting the inevitable, and turning to the ever-increasing advancement of technology as a tool in combating it.
-						For instance, there is speculation that we might become wandering brains, detached from bodies and floating aimlessly through the cosmos, or living in artificial environments constructed on Mars or some other planet of interest. Or a fabricated shield surrounding our planet to fight off our global warming. Our innate need, as humans, to understand ourselves through lived experience and make judgements about the future, feeds our imagination and our collective need to invent and discover.
-					</div>
-				</div>
+				<div class="thoughts-list">
+	<details class="thought-item">
+		<summary>16 July 2026</summary>
+		<div class="thought-content">
+			The more I interact with machines, the more I can discern that humans want to be like machines, but they aren't. And what I mean by this is that we create systems and structures that are formulaic, organised. And yet as embodied beings, our thinking perhaps best occurs when we're not thinking at all, when we haven't structured it into a planned hour, when it just happens. Some of the best inventions and ideas have often happened just going for a walk, or doing something entirely different. But in the day-to-day, we don't really accommodate this, because we've created a rhythm of nine to five, and weekends off.
+		</div>
+	</details>
+	<details class="thought-item">
+		<summary>16 July 2026</summary>
+		<div class="thought-content">
+			To formulate ideas, AI is very good at helping the blurred dot become more focused. But be careful to use it as your sketchbook, not the outcome. Once the idea has formed, go out into the world, let it sit, reflect, and absorb its form.
+		</div>
+	</details>
+	<details class="thought-item">
+		<summary>16 July 2026</summary>
+		<div class="thought-content">
+			I don't know. Can we really tell, through language, what a bot thinks, or should I say calculates? Probably not. Language is just the icing on the cake, the embellishment, but the making of the cake is the bit that is invisible when having an AI-based conversation. It's just computation to a bot, pattern matching and the language of maths. It's that bit that interests me, and in response to Arunav's suggestion, can we expect AI to have the same representations and understanding of emotions through language alone? I would again say probably not.
+		</div>
+	</details>
+	<details class="thought-item">
+		<summary>17 July 2026</summary>
+		<div class="thought-content">
+			Initially, when I developed this project, I wanted to find a language to translate AI's understanding of emotions. I thought this would reveal what knowledge they have in this area. To some degree, it did. But ultimately, it's just a reflection of the data we've provided. And in some senses, it does illustrate the evolving development within previous work I've done. But now I encounter a conundrum, because as I've developed alongside the same AI future as everyone else, my relationship with AI has changed, and I'm now trying to navigate how we work together.
+			The work is simply a reflection of that, but looking at emotions. So I think the question that arises from the work now is not how I can translate how AI understands emotions, but how different entities collaborating on understanding emotion can either hinder or enhance human development.
+		</div>
+	</details>
+	<details class="thought-item">
+		<summary>16 August 2026</summary>
+		<div class="thought-content">
+			I'm currently reading All Brain and No Soul by Robert A. Hunt. Having read just a paragraph, I'm already reflecting on what it means to be slow in contrast to an AI entity that is extremely fast.
+			A couple of years back, Mercedes Bunz (a professor, writer, and lecturer at King's College), asked me to collaborate and make an art-based animation film about artificial intelligence. At the time I knew nothing about AI, but I was fascinated by how humans adjust to new technology, so I took on the task willingly. As the project evolved, so did my entanglement with AI. I quickly learned that tasks which would once have taken days could suddenly be done in seconds, at the flick of a mouse.
+			The adrenaline rush was intoxicating, but it came at a cost. I got more done, but, like scrolling a social media feed, there was a glint of feeling I had never quite done enough, or that what I'd done, on reflection, felt unsatisfactory. Humans need goals, but they also need struggle to make those goals compelling and nourishing.
+			So what I take from my involvement with AI, and from Robert A. Hunt's introduction on how humans understand what is human in an AI-driven world, is this: slowness is not something to berate, but something to celebrate.
+		</div>
+	</details>
+	<details class="thought-item">
+		<summary>17 August 2026</summary>
+		<div class="thought-content">
+			After completing the first chapter of Robert A. Hunt's <em>All Brain and No Soul</em>, I felt I had been transported through light years of information.
+			In a voice narrated by the writer himself, the words flowed easily, and I was reminded of the days he mentioned giving sermons as a priest.
+			His tone and voice speak simply and clearly, narrating every idea with precision and ease. He talks about the evolution of our understanding of where we sit in the universe, and as the years progress and the concepts gain traction and weight, the universe seems to get further and further away. Since as far as we can calculate, humans have always maintained that we are at the centre of everything, and we have gleefully created concepts to reinforce this principle.
+			This has clearly not been the case, and scientific studies, over the years, have further validated that the universe is expanding at a speed we cannot even fathom. We are but a tiny blip, and as everything around us expands, we just get smaller. So where does this leave us, perhaps, as we have always been, curious seekers with an arrogant twang, fighting the inevitable, and turning to the ever-increasing advancement of technology as a tool in combating it.
+			For instance, there is speculation that we might become wandering brains, detached from bodies and floating aimlessly through the cosmos, or living in artificial environments constructed on Mars or some other planet of interest. Or a fabricated shield surrounding our planet to fight off our global warming. Our innate need, as humans, to understand ourselves through lived experience and make judgements about the future, feeds our imagination and our collective need to invent and discover.
+		</div>
+	</details>
+</div>
 			</section>
 			
 		</main>
