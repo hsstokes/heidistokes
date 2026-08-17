@@ -19,19 +19,21 @@
 	    padding: 20px 0;
 	    justify-content: flex-start;
 	}
-	.sticky-note {
-	    width: 260px;
-	    min-height: 220px;
-	    padding: 24px 20px;
-	    background: #fdf3c7;
-	    box-shadow: 3px 4px 10px rgba(0,0,0,0.15);
-	    font-family: 'IBM Plex Mono', monospace;
-	    font-size: 0.85rem;
-	    line-height: 1.6;
-	    color: var(--ink);
-	    position: relative;
-	    transform: rotate(-2deg);
-	    transition: transform 0.2s ease;
+		.sticky-note {
+		width: calc((100% - 60px) / 3);
+		min-width: 220px;
+		box-sizing: border-box;
+		min-height: 220px;
+		padding: 24px 20px;
+		background: #fdf3c7;
+		box-shadow: 3px 4px 10px rgba(0,0,0,0.15);
+		font-family: 'IBM Plex Mono', monospace;
+		font-size: 0.85rem;
+		line-height: 1.6;
+		color: var(--ink);
+		position: relative;
+		transform: rotate(-2deg);
+		transition: transform 0.2s ease;
 	}
 	.sticky-note:nth-child(2n) { background: #ffd9e8; transform: rotate(1.5deg); }
 	.sticky-note:nth-child(3n) { background: #d9f2d0; transform: rotate(-1deg); }
