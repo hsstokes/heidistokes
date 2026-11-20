@@ -41,7 +41,7 @@ body {
 -----------------------------------*/
 
 .page-wrapper {
-    max-width: 900px;
+    max-width: 1200px;
     width: 95%;
     margin: 10px auto;
     border: 1px solid var(--warm-border);
@@ -52,7 +52,7 @@ body {
 }
 
 .page-container {
-    max-width: 880px;
+    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     border: none;
